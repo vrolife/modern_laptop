@@ -12,11 +12,12 @@ fi
 PRODUCTION_NAME="$(dmidecode -s baseboard-product-name)-$(dmidecode -s system-product-name|sed 's/ /_/g')"
 BIOS_VERSION="$(dmidecode -s bios-version)"
 
-ln -s "$PRODUCTION_NAME/$BIOS_VERSION" .product
-
-if test ! -e .product/patch.diff; then
+if test ! -e "$PRODUCTION_NAME"; then
     echo "Unsupported product"
 fi
+
+ln -s "$PRODUCTION_NAME" .product
+ln -s "$PRODUCTION_NAME/$BIOS_VERSION" .bios
 
 echo "run \`make install\` to build and install acpi_override"
 echo "run \`make grub\` to load acpi_override at boot"

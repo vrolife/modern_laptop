@@ -7,8 +7,8 @@ dsdt.dat:
 dsdt.dsl: dsdt.dat
 	iasl -d dsdt.dat
 
-dsdt.aml: dsdt.dsl .product/patch.diff
-	patch < .product/patch.diff
+dsdt.aml: dsdt.dsl .bios/patch.diff
+	patch < .bios/patch.diff
 	iasl dsdt.dsl
 
 compile:
@@ -31,7 +31,13 @@ grub:
 	echo "GRUB_EARLY_INITRD_LINUX_CUSTOM=\"acpi_override\"" >>/etc/default/grub
 	update-grub2
 
+redmibook_wmi:
+	mkdir -p /usr/src
+	dkms add .product/redmibook_wmi
+	dkms install redmibook_wmi/1.0.1
+	modprobe redmibook_wmi
+
 clean:
 	rm -rf ./kernel
 	rm -f dsdt* acpi_override
-	rm -f .product
+	rm -f .bios .product
