@@ -1,0 +1,2 @@
+Service: https://www.mi.com/service/bijiben/drivers/A28S
+BIOS: https://cdn.cnbj1.fds.api.mi-img.com/mibook-drivers/BIOS/A28SA39S/20220616/RMARB4B0P0A0A.zip
