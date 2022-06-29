@@ -1,6 +1,12 @@
-# Redmi Book Pro 15 2022 锐龙版 键盘驱动
+# Redmi Book Pro 14/15 2022 锐龙版 键盘驱动
 
-# Redmi Book Pro 15 2022 Ryzen keyboard driver
+# Redmi Book Pro 14/15 2022 Ryzen keyboard driver
+
+# Dependences
+
+- make
+- acpica-tools
+- dmidecode
 
 # Usage
 
