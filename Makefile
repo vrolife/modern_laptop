@@ -29,7 +29,7 @@ install: acpi_override
 
 grub:
 	echo "GRUB_EARLY_INITRD_LINUX_CUSTOM=\"acpi_override\"" >>/etc/default/grub
-	update-grub2
+	update-grub
 
 redmibook_wmi:
 	mkdir -p /usr/src

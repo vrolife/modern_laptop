@@ -4,6 +4,8 @@
 
 if test $ID = "debian" -o $ID_LIKE = "debian"; then
     apt install make acpica-tools dmidecode
+elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
+    pacman -S make acpica dmidecode cpio
 else
     echo "Unknown environment"
     exit -1
