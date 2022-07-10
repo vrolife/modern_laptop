@@ -1,0 +1,35 @@
+[    0.821770] wmi: 46C93E13-EE9B-4262-8488-563BCA757FEF:
+[    0.821772] wmi:     notify_id: 0x20
+[    0.821773] wmi:     instance_count: 1
+[    0.821774] wmi:     flags: 0x8 ACPI_WMI_EVENT
+[    0.821779] wmi: FA78E245-2C0F-4CA1-91CF-15F34E474850:
+[    0.821780] wmi:     notify_id: 0x21
+[    0.821781] wmi:     instance_count: 1
+[    0.821781] wmi:     flags: 0x8 ACPI_WMI_EVENT
+[    0.821785] wmi: 1DCEAF0A-4D63-44BB-BD0C-0D6281BFDDC5:
+[    0.821785] wmi:     notify_id: 0x22
+[    0.821786] wmi:     instance_count: 1
+[    0.821787] wmi:     flags: 0x8 ACPI_WMI_EVENT
+[    0.821790] wmi: 3F9E3C26-B077-4F86-91F5-37FF64D8C7ED:
+[    0.821790] wmi:     notify_id: 0x23
+[    0.821791] wmi:     instance_count: 1
+[    0.821791] wmi:     flags: 0x8 ACPI_WMI_EVENT
+[    0.821793] wmi: B60BFB48-3E5B-49E4-A0E9-8CFFE1B3434B:
+[    0.821793] wmi:     object_id: AA
+[    0.821794] wmi:     instance_count: 1
+[    0.821795] wmi:     flags: 0x2 ACPI_WMI_METHOD
+[    0.821798] wmi: 05901221-D566-11D1-B2F0-00A0C9062910:
+[    0.821798] wmi:     object_id: AB
+[    0.821799] wmi:     instance_count: 1
+[    0.821800] wmi:     flags: 0x0
+[    0.827319] wmi: ABBC0F6A-8EA1-11D1-00A0-C90629100000:
+[    0.827321] wmi:     object_id: AA
+[    0.827322] wmi:     instance_count: 1
+[    0.827322] wmi:     flags: 0x2 ACPI_WMI_METHOD
+[    0.827326] wmi: 05901221-D566-11D1-B2F0-00A0C9062910:
+[    0.827327] wmi:     object_id: BA
+[    0.827327] wmi:     instance_count: 1
+[    0.827328] wmi:     flags: 0x0
+
+[   43.298261] wmi: DEBUG: event 0x20 BUFFER_TYPE - length 32
+[   43.298272] wmi: DEBUG: GUID 46C93E13-EE9B-4262-8488-563BCA757FEF event 0x20

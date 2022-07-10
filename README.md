@@ -18,7 +18,12 @@ make install # install acpi_override
 make grub # update grub
 make redmibook_wmi # install wmi driver
 ```
-# Keymap
+# Supported products
+
+- TM2107-Redmi_Book_Pro_14_2022 (BIOS Version:RMARB4B0P0808)
+- TM2113-Redmi_Book_Pro_15_2022 (BIOS Version:RMARB5B0P0A0A)
+
+# WMI Keymap
 
 - Fn + ESC => KEY_FN_ESC
 - Fn + F6  => KEY_PROG1
@@ -28,5 +33,14 @@ make redmibook_wmi # install wmi driver
 - Fn + F10 => KEY_FN_F10
 - Xiao Ai  => KEY_MEDIA
 
-[更多信息|More information](https://zhuanlan.zhihu.com/p/530643928)
+# Changelog
 
+- 2022年7月10日星期日 下午12:01
+
+  1. 可选 - 将按键KP_Enter映射为Enter。[传送](https://github.com/vrolife/modern_laptop/issues/3)
+
+  2. 修复 - 可能的，PSR导致的内核崩溃。[传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/fix/PSR-crash/README.md)
+
+# More information
+
+[更多信息](https://zhuanlan.zhihu.com/p/530643928)

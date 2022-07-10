@@ -16,6 +16,12 @@ BIOS_VERSION="$(dmidecode -s bios-version)"
 
 if test ! -e "$PRODUCTION_NAME"; then
     echo "Unsupported product"
+    exit -1
+fi
+
+if test ! -e "$PRODUCTION_NAME/$BIOS_VERSION"; then
+    echo "Unsupported BIOS version"
+    exit -1
 fi
 
 ln -s "$PRODUCTION_NAME" .product
