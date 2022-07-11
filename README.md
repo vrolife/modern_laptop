@@ -35,6 +35,10 @@ make redmibook_wmi # install wmi driver
 
 # Changelog
 
+- 2022年7月12日星期二 上午3:25
+
+  1. 修复DSDT一处Buffer越界访问
+
 - 2022年7月10日星期日 下午12:01
 
   1. 可选 - 将按键KP_Enter映射为Enter。[传送](https://github.com/vrolife/modern_laptop/issues/3)
