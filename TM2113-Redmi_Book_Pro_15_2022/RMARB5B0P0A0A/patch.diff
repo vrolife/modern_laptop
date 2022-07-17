@@ -1,5 +1,7 @@
---- dsdt.dsl	2022-06-18 16:57:33.388744781 +0800
-+++ ../dsdt.dsl	2022-06-18 16:55:52.723229288 +0800
+diff --git dsdt.dsl b/dsdt.dsl
+index 95aea35..849e147 100644
+--- dsdt.dsl
++++ b/dsdt.dsl
 @@ -18,7 +18,7 @@
   *     Compiler ID      "ACPI"
   *     Compiler Version 0x00040000 (262144)
@@ -9,7 +11,7 @@
  {
      External (_SB_.ALIB, MethodObj)    // 2 Arguments
      External (_SB_.APTS, MethodObj)    // 1 Arguments
-@@ -5093,7 +5093,7 @@
+@@ -5093,7 +5093,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000002)
                              0x01,               // Alignment
                              0x01,               // Length
                              )
@@ -18,17 +20,7 @@
                              {1}
                      })
                  }
-@@ -1586,7 +1586,8 @@ DefinitionBlock ("", "SSDT", 2, "XMCC ", "XMCC2113", 0x00000002)
-             CreateDWordField (Local7, 0x10, A009)
-             CreateDWordField (Local7, 0x14, A010)
-             Local0 = 0x02
--            While ((Local0 < A148))
-+            Local6 = A148
-+            While ((Local0 < Local6))
-             {
-                 Local1 = DerefOf (Arg0 [Local0])
-                 Local0++
-@@ -5473,7 +5473,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000003)
+@@ -5471,7 +5471,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000002)
                      {
                          If ((DPTC == One))
                          {
@@ -37,7 +29,7 @@
                              CreateWordField (PPPB, Zero, SSZE)
                              CreateByteField (PPPB, 0x02, PMDH)
                              CreateDWordField (PPPB, 0x03, VCLT)
-@@ -5481,7 +5481,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000003)
+@@ -5479,7 +5479,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000002)
                              CreateDWordField (PPPB, 0x08, VMCL)
                              CreateByteField (PPPB, 0x0C, PMDB)
                              CreateDWordField (PPPB, 0x0D, P3TL)

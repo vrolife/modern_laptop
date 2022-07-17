@@ -2,7 +2,7 @@
 all: acpi_override
 
 dsdt.dat:
-	cat /sys/firmware/acpi/tables/DSDT > dsdt.dat
+	cp /sys/firmware/acpi/tables/DSDT dsdt.dat
 
 dsdt.dsl: dsdt.dat
 	iasl -d dsdt.dat

@@ -1,3 +1,6 @@
 .vscode
-.produce
+.product
 .bios
+acpi_override
+kernel
+dsdt*
