@@ -17,6 +17,7 @@ sh configure.sh
 make install # install acpi_override
 make grub # update grub
 make redmibook_wmi # install wmi driver
+make blue8852be # install driver for 8852be blutooth part
 ```
 # Supported products
 
@@ -34,6 +35,10 @@ make redmibook_wmi # install wmi driver
 - Xiao Ai  => KEY_MEDIA
 
 # Changelog
+
+- 2022年7月18日星期一 下午11:29
+
+  1. 添加蓝牙驱动 [传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/blue8852be/README.md)
 
 - 2022年7月18日星期一 下午6:29
 

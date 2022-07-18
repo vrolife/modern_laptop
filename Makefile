@@ -37,6 +37,12 @@ redmibook_wmi:
 	dkms install redmibook_wmi/1.0.1
 	modprobe redmibook_wmi
 
+blue8852be:
+	mkdir -p /usr/src
+	dkms add .product/blue8852be
+	dkms install blue8852be/1.0.0
+	modprobe blue8852be
+
 clean:
 	rm -rf ./kernel
 	rm -f dsdt* acpi_override
