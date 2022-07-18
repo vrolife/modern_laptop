@@ -35,6 +35,10 @@ make redmibook_wmi # install wmi driver
 
 # Changelog
 
+- 2022年7月18日星期一 下午6:29
+
+  1. 增加指纹驱动(USB 0x10a5 0x9201) [传送](https://github.com/vrolife/modern_laptop/TM2113-Redmi_Book_Pro_15_2022/fingerprint/README.md)
+
 - 2022年7月12日星期二 上午3:25
 
   1. 修复DSDT一处Buffer越界访问
