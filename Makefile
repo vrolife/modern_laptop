@@ -19,11 +19,6 @@ acpi_override: dsdt.aml
 	cp dsdt.aml kernel/firmware/acpi/
 	find kernel | cpio -H newc --create > acpi_override
 
-check:
-	cp /sys/firmware/acpi/tables/DSDT dsdt_running.dat
-	iasl -d dsdt_running.dat
-	cat dsdt_running.dsl|grep -C 20 -i KEY
-
 install: acpi_override
 	cp acpi_override /boot/acpi_override
 
@@ -44,6 +39,13 @@ blue8852be:
 	dkms install blue8852be/1.0.1
 	-modprobe -r btusb btrtl
 	modprobe btusb btrtl
+
+rtl8852be:
+	mkdir -p /usr/src
+	-dkms add .product/rtl8852be
+	dkms install rtl8852be/1.0.0
+	-modprobe -r 8852be
+	modprobe 8852be
 
 clean:
 	rm -rf ./kernel

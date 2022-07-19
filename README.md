@@ -62,6 +62,10 @@ make blue8852be # install driver for 8852be blutooth part
 
 # Changelog
 
+- 2022年7月19日星期二 下午4:09
+
+  1. 添加 RTL8852BE WIFI 驱动
+
 - 2022年7月19日星期二 下午12:39
 
   1. 支持从旧版升级
