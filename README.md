@@ -8,6 +8,29 @@
 - acpica-tools
 - dmidecode
 
+# 升级
+
+如果之前`make install`安装过/boot/acpi_override，升级安装新版的话，会出现这样的错误
+
+```
+patching file dsdt.dsl
+Reversed (or previously applied) patch detected!  Assume -R? [n] y
+Hunk #3 FAILED at 5471.
+Hunk #4 FAILED at 5479.
+2 out of 4 hunks FAILED -- saving rejects to file dsdt.dsl.rej
+```
+
+这时需要启动到Grub启动菜单，在启动选项按E编辑，删除initrd后面的acpi_override部分。接着按F10启动进系统安装新版补丁。注意这时键盘是无效的，请自备外置键盘。
+
+无痛升级在此轮`2022年7月19日星期二 下午12:39`更新后支持
+
+# 卸载
+
+键盘补丁：编辑文件`/etc/default/grub`，删除`GRUB_EARLY_INITRD_LINUX_CUSTOM="acpi_override"`后`update-initramfs -k all`
+功能键：`sudo dkms remove redmibook_wmi/x.x.x`
+蓝牙驱动：`sudo dkms remove blue8852be/x.x.x`
+网卡驱动： `sudo dkms remove rtl8852be/x.x.x`
+
 # Usage
 
 ```
@@ -19,6 +42,9 @@ make grub # update grub
 make redmibook_wmi # install wmi driver
 make blue8852be # install driver for 8852be blutooth part
 ```
+
+安装后，目录下的original_dsdt.dat是原版DSDT,请保留此文件用于将来升级DSDT补丁。
+
 # Supported products
 
 - TM2107-Redmi_Book_Pro_14_2022 (BIOS Version:RMARB4B0P0808)
@@ -35,6 +61,10 @@ make blue8852be # install driver for 8852be blutooth part
 - Xiao Ai  => KEY_MEDIA
 
 # Changelog
+
+- 2022年7月19日星期二 下午12:39
+
+  1. 支持从旧版升级
 
 - 2022年7月18日星期一 下午11:29
 

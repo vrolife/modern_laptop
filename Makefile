@@ -2,7 +2,7 @@
 all: acpi_override
 
 dsdt.dat:
-	cp /sys/firmware/acpi/tables/DSDT dsdt.dat
+	/bin/sh dump_dsdt.sh
 
 dsdt.dsl: dsdt.dat
 	iasl -d dsdt.dat
@@ -33,15 +33,17 @@ grub:
 
 redmibook_wmi:
 	mkdir -p /usr/src
-	dkms add .product/redmibook_wmi
-	dkms install redmibook_wmi/1.0.1
+	-dkms add .product/redmibook_wmi
+	dkms install redmibook_wmi/1.0.2
+	-modprobe -r redmibook_wmi
 	modprobe redmibook_wmi
 
 blue8852be:
 	mkdir -p /usr/src
-	dkms add .product/blue8852be
-	dkms install blue8852be/1.0.0
-	modprobe blue8852be
+	-dkms add .product/blue8852be
+	dkms install blue8852be/1.0.1
+	-modprobe -r btusb btrtl
+	modprobe btusb btrtl
 
 clean:
 	rm -rf ./kernel
