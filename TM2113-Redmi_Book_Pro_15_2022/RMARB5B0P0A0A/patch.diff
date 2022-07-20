@@ -24,8 +24,8 @@ index 95aea35..849e147 100644
                      {
                          If ((DPTC == One))
                          {
--                            Name (PPPB, Buffer (0x12) {})
-+                            Name (PPPB, Buffer (0x11) {})
+-                            Name (PPPB, Buffer (0x12){})
++                            Name (PPPB, Buffer (0x11){})
                              CreateWordField (PPPB, Zero, SSZE)
                              CreateByteField (PPPB, 0x02, PMDH)
                              CreateDWordField (PPPB, 0x03, VCLT)
