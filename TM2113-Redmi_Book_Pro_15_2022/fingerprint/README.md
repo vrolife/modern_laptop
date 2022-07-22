@@ -9,7 +9,7 @@
 
 # 要求
 
-系统：22.04 LTS (Jammy Jellyfish)
+系统：Ubuntu 22.04 LTS (Jammy Jellyfish)
 
 包：
 
@@ -19,6 +19,10 @@
 - libssl3
 - libdbus-1-3
 - fprintd
+
+# Archlinux
+
+[传送](https://github.com/vrolife/modern_laptop/issues/5#issuecomment-1191811841)
 
 # 安装方法
 
@@ -45,6 +49,10 @@ ExecStart=/opt/fingerpp/bin/fingerpp --bus=system
 # 开放源代码
 
 驱动用了内部异步框架开发的，而这个框架还没做好开源的准备。因此目前只放出二进制文件。若有财主任性，再另说了。
+
+2022年7月22日星期五
+
+整理了一些文档资料，放在docs/目录下。其中包括传感器的通信协议和通信流程。还有两份基于C和Python的通信程序不完整例子。基于这些资料，已经足够开发另一个驱动程序。
 
 # 文件
 

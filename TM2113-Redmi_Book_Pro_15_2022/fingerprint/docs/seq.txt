@@ -1,0 +1,56 @@
+bmRequestType:
+    0x40 host to device (ctrl write)
+    0xc0 device to host (ctrl read)
+
+
+write(cmd_indicate_s_state, 0x0010, 0x0000, 0)
+
+read(cmd_get_state, 0, 0, 72)
+    $45 72 bytes = 4 bytes version + unknown data
+
+write(cmd_init, 0x0001, 0, 4, hex"102f1117")
+    $54 event ev_init_result
+        contains version string
+
+read(get_tls_key, 0, 0, 1000)
+    $57 121 bytes
+        contains "FPC TLS Keys"
+        STRUCT
+            uint32 magic ED 0D EC 0D
+            uint32 f1 0x1c key
+            uint32 f2 0x20 key len
+            uint32 f3 0x4c aad
+            uint32 f4 0x0d aad len
+            uint32 f5 0x59 hmac
+            uint32 f6 0x20 hmac len
+
+
+write(cmd_tls_init, 0x0001, 0, 0)
+    $60 event ev_tls 62 bytes
+        client hello
+
+write(cmd_tls_data, 0x0001, 0, 64, $62)
+write(cmd_tls_data, 0x0001, 0, 15, $64)
+write(cmd_tls_data, 0x0001, 0, 9, $66)
+ssl handshake seq ...
+
+start sensor
+write(cmd_arm, 0x0001, 0, 4, "112f1117")
+
+$84 event ev_finger_down
+
+write(cmd_get_img, 0, 0, 0)
+ssl application date ...
+
+read(cmd_get_kpi, 0,0, 28)
+    got 28 bytes
+
+write(cmd_get_dead_pixel, 0, 0, 0)
+    tls data
+
+// stop sensor ???
+write(cmd_arm, 0x0001, 0, 4, "122f1117")
+
+write(cmd_fingerprint_sesson_off, 0, 0, 0)
+write(cmd_abort, 1, 0, 0)
+write(cmd_fingerprint_sesson_off, 0, 0, 0)

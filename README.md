@@ -41,6 +41,7 @@ make install # install acpi_override
 make grub # update grub
 make redmibook_wmi # install wmi driver
 make blue8852be # install driver for 8852be blutooth part
+make rtl8852be # install driver for 8852be wifi part
 ```
 
 安装后，目录下的original_dsdt.dat是原版DSDT,请保留此文件用于将来升级DSDT补丁。
