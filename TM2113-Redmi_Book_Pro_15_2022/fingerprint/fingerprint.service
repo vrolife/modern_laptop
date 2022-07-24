@@ -1,0 +1,9 @@
+[Unit]
+Description=Redmibook 15 2022 Fingerprint Driver
+
+[Service]
+ExecStart=/usr/bin/podman run -v /var/run/dbus:/var/run/dbus -v /var/lib/fprint:/var/lib/fprint --device /dev/bus/usb/001/002 localhost/fingerprint
+ExecStop=/bin/sh /usr/bin/stop_fprint
+
+[Install]
+WantedBy=multi-user.target
