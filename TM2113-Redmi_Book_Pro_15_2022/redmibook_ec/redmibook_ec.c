@@ -6,8 +6,11 @@
 #include <linux/init.h>
 #include <linux/suspend.h>
 #include <linux/dmi.h>
+#include <linux/leds.h>
 
 #include "TIMI_TM2113.h"
+
+#error "for keyboard backlight control, please use redmibook_kbd_backlight"
 
 static bool turn_keyboard_backlight_off_after_suspend = 0;
 module_param(turn_keyboard_backlight_off_after_suspend, bool, 0644);
@@ -106,7 +109,7 @@ static acpi_status ecmd(u64 val)
 // Common
 
 #define DEF_FILE(machine, name) \
-acpi_handle handle_##machine##_##name; \
+static acpi_handle handle_##machine##_##name; \
 static ssize_t machine##_##name##_show(struct kobject* kobj, struct kobj_attribute* attr, char* buf) \
 { \
     u64 val; \

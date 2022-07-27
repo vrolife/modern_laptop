@@ -63,6 +63,10 @@ make rtl8852be # install driver for 8852be wifi part
 
 # Changelog
 
+- 2022年7月28日星期四 上午1:55
+
+  1. 添加键盘背光驱动 [传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/redmibook_kbd_backlight/README.md)
+
 - 2022年7月27日星期三 下午5:41
 
   1. 修复不插电的情况下从休眠唤醒重启，和SSD不安全掉电。[传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/fix/resume-from-suspend-and-ssd-unsafe-shutdown/README.md)
