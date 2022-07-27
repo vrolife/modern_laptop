@@ -5,7 +5,7 @@
 # Dependences
 
 - make
-- acpica-tools
+- acpica-tools (20200925)
 - dmidecode
 
 # 升级
@@ -62,6 +62,10 @@ make rtl8852be # install driver for 8852be wifi part
 - Xiao Ai  => KEY_MEDIA
 
 # Changelog
+
+- 2022年7月27日星期三 下午5:41
+
+  1. 修复不插电的情况下从休眠唤醒重启，和SSD不安全掉电。[传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/fix/resume-from-suspend-and-ssd-unsafe-shutdown/README.md)
 
 - 2022年7月19日星期二 下午4:09
 

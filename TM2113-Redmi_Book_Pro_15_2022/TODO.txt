@@ -1,0 +1,2 @@
+NVME safe shutdown
+Battery wake up

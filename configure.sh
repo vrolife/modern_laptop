@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 . /etc/os-release
 
@@ -13,6 +14,11 @@ elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
     pacman -S make acpica dmidecode cpio
 else
     echo "Unknown environment"
+    exit 1
+fi
+
+if test "$(iasl -v|grep version|cut -d ' ' -f 5 -)" != "20200925"; then
+    echo "Please install acpica-tools 20200925"
     exit 1
 fi
 

@@ -22,6 +22,8 @@ acpi_override: dsdt.aml
 install: acpi_override
 	cp acpi_override /boot/acpi_override
 
+test: compile install
+
 grub:
 	echo "GRUB_EARLY_INITRD_LINUX_CUSTOM=\"acpi_override\"" >>/etc/default/grub
 	update-grub
