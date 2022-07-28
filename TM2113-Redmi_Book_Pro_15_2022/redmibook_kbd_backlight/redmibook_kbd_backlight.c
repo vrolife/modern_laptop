@@ -106,7 +106,6 @@ static unsigned int brightness_to_kbbl(enum led_brightness brightness)
 
 static void kbbl_brightness_set(struct led_classdev* led, enum led_brightness brightness)
 {
-    pr_info("kbbl_brightness_set %d", (int)brightness);
     ecram_write(handle_KBBL, brightness_to_kbbl(brightness));
 }
 
@@ -124,7 +123,7 @@ enum led_brightness kbbl_brightness_get(struct led_classdev *led_cdev)
 static struct led_classdev redmibook_kbd_backlight = {
     .name = "redmibook::kbd_backlight",
     .brightness = 0,
-    .max_brightness = 255,
+    .max_brightness = 3,
     .brightness_set = kbbl_brightness_set,
     .brightness_get = kbbl_brightness_get
 };
@@ -186,7 +185,8 @@ static int __init ec_init(void)
 
     redmibook_kbd_backlight.brightness = (unsigned int)kbbl_brightness_get(&redmibook_kbd_backlight);
 
-    device = acpi_bus_get_acpi_device(handle_EC0);
+    acpi_bus_get_device(handle_EC0, &device);
+
     led_classdev_register(&device->dev, &redmibook_kbd_backlight);
 
     register_pm_notifier(&pm_notifier_block);
