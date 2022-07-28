@@ -5,7 +5,7 @@
  *
  *  Copyright (C) 2005-2008  Marcel Holtmann <marcel@holtmann.org>
  */
-
+#include <linux/version.h>
 #include <linux/dmi.h>
 #include <linux/module.h>
 #include <linux/usb.h>
@@ -1015,8 +1015,10 @@ static void btusb_intr_complete(struct urb *urb)
 		if (err != -EPERM && err != -ENODEV)
 			bt_dev_err(hdev, "urb %p failed to resubmit (%d)",
 				   urb, -err);
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
 		if (err != -EPERM)
 			hci_cmd_sync_cancel(hdev, -err);
+#endif
 		usb_unanchor_urb(urb);
 	}
 }
@@ -1060,8 +1062,10 @@ static int btusb_submit_intr_urb(struct hci_dev *hdev, gfp_t mem_flags)
 		if (err != -EPERM && err != -ENODEV)
 			bt_dev_err(hdev, "urb %p submission failed (%d)",
 				   urb, -err);
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
 		if (err != -EPERM)
 			hci_cmd_sync_cancel(hdev, -err);
+#endif
 		usb_unanchor_urb(urb);
 	}
 
@@ -1442,8 +1446,10 @@ static void btusb_tx_complete(struct urb *urb)
 	if (!urb->status) {
 		hdev->stat.byte_tx += urb->transfer_buffer_length;
 	} else {
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
 		if (hci_skb_pkt_type(skb) == HCI_COMMAND_PKT)
 			hci_cmd_sync_cancel(hdev, -urb->status);
+#endif
 		hdev->stat.err_tx++;
 	}
 
@@ -2070,8 +2076,10 @@ static int btusb_setup_csr(struct hci_dev *hdev)
 		 */
 		set_bit(HCI_QUIRK_BROKEN_STORED_LINK_KEY, &hdev->quirks);
 		set_bit(HCI_QUIRK_BROKEN_ERR_DATA_REPORTING, &hdev->quirks);
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
 		set_bit(HCI_QUIRK_BROKEN_FILTER_CLEAR_ALL, &hdev->quirks);
 		set_bit(HCI_QUIRK_NO_SUSPEND_NOTIFIER, &hdev->quirks);
+#endif
 
 		/* Clear the reset quirk since this is not an actual
 		 * early Bluetooth 1.1 device from CSR.
@@ -3743,7 +3751,11 @@ static int btusb_probe(struct usb_interface *intf,
 	hdev->flush  = btusb_flush;
 	hdev->send   = btusb_send_frame;
 	hdev->notify = btusb_notify;
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
 	hdev->wakeup = btusb_wakeup;
+#else
+	hdev->prevent_wake = btusb_wakeup;
+#endif
 
 #ifdef CONFIG_PM
 	err = btusb_config_oob_wake(hdev);
