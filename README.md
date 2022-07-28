@@ -63,6 +63,14 @@ make rtl8852be # install driver for 8852be wifi part
 
 # Changelog
 
+- 2022年7月28日星期四 下午10:17
+
+  1. WLAN和蓝牙驱动支持5.15内核。之前是5.17
+
+  2. 修复键盘背光驱动最高亮度
+
+  3. 为 Ubuntu 22.04 添加AMD闭源驱动支持（ROCm）[传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/fix/rocm-for-ubuntu-22.04/README.md)
+
 - 2022年7月28日星期四 上午1:55
 
   1. 添加键盘背光驱动 [传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/redmibook_kbd_backlight/README.md)
