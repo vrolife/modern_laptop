@@ -1,0 +1,11 @@
+Source: python
+Maintainer: Pom <pom@laputa.lan>
+Section: misc
+Priority: optional
+Standards-Version: 0.0.1
+Build-Depends: debhelper (>= 10),python3
+
+Package: python
+Architecture: all
+Depends: python3
+Description: python

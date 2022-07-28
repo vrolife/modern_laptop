@@ -1,0 +1,11 @@
+Source: libgcc-7-dev
+Maintainer: Pom <pom@laputa.lan>
+Section: misc
+Priority: optional
+Standards-Version: 7.5.0-6~
+Build-Depends: debhelper (>= 10), libgcc-11-dev
+
+Package: libgcc-7-dev
+Architecture: all
+Depends: libgcc-11-dev
+Description: libgcc-7-dev

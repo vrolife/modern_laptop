@@ -1,0 +1,11 @@
+Source: libstdc++-7-dev
+Maintainer: Pom <pom@laputa.lan>
+Section: misc
+Priority: optional
+Standards-Version: 0.0.1
+Build-Depends: debhelper (>= 10), libstdc++-11-dev
+
+Package: libstdc++-7-dev
+Architecture: all
+Depends: libstdc++-11-dev
+Description: libstdc++-7-dev
