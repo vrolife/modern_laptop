@@ -46,6 +46,12 @@ ExecStart=/opt/fingerpp/bin/fingerpp --bus=system
 
 录入技巧是先重复几次录入主要区域，再移动手指录入周边区域。能否成功全看运气。另外目前的算法容错率较低，很可能今天录的明天就用不了，取决于用户指纹的稳定性。
 
+# fingerpp2
+
+导出两个参数。同时提供录入进度。
+
+如果识别率较低可以使用以下参数`/opt/fingerpp/bin/fingerpp --bus=system --filter-before-ssim=true --min-score=0.3`
+
 # 开放源代码
 
 驱动用了内部异步框架开发的，而这个框架还没做好开源的准备。因此目前只放出二进制文件。若有财主任性，再另说了。
@@ -57,6 +63,8 @@ ExecStart=/opt/fingerpp/bin/fingerpp --bus=system
 # 文件
 
 - fingerpp SHA56:ed1dfe8c57ea9c54321a5288d05dca93869f6e67476034e8b752f768cd0ab8cc
+
+- fingerpp2 SHA56:2557555afa7ef05c9f6deb9b5e17ff700739c840935381fdcfc6343f8157c02c
 
 # 资料
 
