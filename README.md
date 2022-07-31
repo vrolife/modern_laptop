@@ -63,6 +63,10 @@ make rtl8852be # install driver for 8852be wifi part
 
 # Changelog
 
+- 2022年8月1日星期一 上午2:36
+
+  1. 新增麦克风驱动（Redmibook Pro 15 2022 & Linux 5.17）[传送](https://github.com/vrolife/modern_laptop/blob/main/TM2113-Redmi_Book_Pro_15_2022/redmibook_dmic/README.md)
+
 - 2022年7月28日星期四 下午10:17
 
   1. WLAN和蓝牙驱动支持5.15内核。之前是5.17
