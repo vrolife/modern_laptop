@@ -1,0 +1,71 @@
+Description: smooth brightness
+ smooth brightness
+ .
+ powerdevil (4:5.24.4-0ubuntu1) jammy; urgency=medium
+ .
+   * New upstream bugfix release (5.24.4)
+Author: Rik Mills <rikmills@kde.org>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2022-08-08
+
+--- powerdevil-5.24.4.orig/daemon/backends/upower/backlighthelper.cpp
++++ powerdevil-5.24.4/daemon/backends/upower/backlighthelper.cpp
+@@ -121,17 +121,6 @@ void BacklightHelper::initUsingBacklight
+         file.close();
+     }
+ 
+-
+-    if (!firmware.isEmpty()) {
+-        m_dirname = BACKLIGHT_SYSFS_PATH + firmware.constFirst();
+-        return;
+-    }
+-
+-    if (!platform.isEmpty()) {
+-        m_dirname = BACKLIGHT_SYSFS_PATH + platform.constFirst();
+-        return;
+-    }
+-
+     if (raw.isEmpty()) {
+         // if no raw type backlight device found, let's fall back and try again
+         for (const QString &interface : interfaces) {
+@@ -151,8 +140,19 @@ void BacklightHelper::initUsingBacklight
+         m_dirname = BACKLIGHT_SYSFS_PATH + raw.constFirst();
+         return;
+     }
++
++    if (!firmware.isEmpty()) {
++        m_dirname = BACKLIGHT_SYSFS_PATH + firmware.constFirst();
++        return;
++    }
++
++    if (!platform.isEmpty()) {
++        m_dirname = BACKLIGHT_SYSFS_PATH + platform.constFirst();
++        return;
++    }
+ }
+ 
++
+ void BacklightHelper::initUsingSysctl()
+ {
+ #ifdef USE_SYSCTL
+--- powerdevil-5.24.4.orig/daemon/powerdevilscreenbrightnesslogic.cpp
++++ powerdevil-5.24.4/daemon/powerdevilscreenbrightnesslogic.cpp
+@@ -33,6 +33,7 @@ int ScreenBrightnessLogic::toggled() con
+ int ScreenBrightnessLogic::calculateSteps(int maxValue) const
+ {
+     // We assume that the preferred number of steps for screen brightness is 20, but we don't want more.
++    return maxValue;
+ 
+     if (maxValue <= 20) {
+         // Too few steps, return the number of actual steps.

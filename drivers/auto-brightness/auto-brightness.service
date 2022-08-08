@@ -1,0 +1,11 @@
+[Unit]
+Description=Auto brightness
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=/opt/auto-brightness/bin/auto-brightness --config=/etc/auto-brightness.json
+
+[Install]
+WantedBy=default.target
