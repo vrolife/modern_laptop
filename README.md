@@ -15,13 +15,13 @@
 
 Drivers:
 
-- redmibook_wmi
-- redmibook_kbd_backlight
-- redmibook_dmic
-- fingerprint
-- blue8852be
-- rtl8852be
-- auto-brightness
+- redmibook_wmi 功能键
+- redmibook_kbd_backlight 键盘背光
+- redmibook_dmic 麦克风
+- fingerprint 指纹
+- blue8852be 蓝牙
+- rtl8852be WIFI
+- auto-brightness 自动亮度
 
 Fixes:
 
