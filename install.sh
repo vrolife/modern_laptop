@@ -6,6 +6,15 @@ export TOP_DIR="$(dirname $(realpath $0))"
 COMPONENT="$1"
 COMMAND="$(basename "$0")"
 
+if test -z "$COMPONENT" -o "$COMPONENT" = "-h" -o "$COMPONENT" = "--help"; then
+    echo "Usage:"
+    echo "sudo /bin/sh ./install.sh acpi # apply keyboard patch"
+    echo "sudo /bin/sh ./install.sh redmibook_dmic # apply microphone patch"
+    echo "Force install:"
+    echo "sudo FORCE_INSTALL=1 /bin/sh ./install.sh redmibook_dmic"
+    exit 0
+fi
+
 . /etc/os-release
 
 if test $(id -u) -ne 0; then
@@ -14,28 +23,25 @@ if test $(id -u) -ne 0; then
 fi
 
 if test $ID = "debian" -o $ID_LIKE = "debian"; then
-    apt install make acpica-tools dmidecode
+    apt update
+    apt install -y dkms bash make acpica-tools dmidecode mokutil
+
 elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
-    pacman -S make acpica dmidecode cpio
+    pacman -S dkms bash make acpica dmidecode mokutil
+
 else
     echo "Unknown environment"
     exit 1
 fi
 
-if test "$(iasl -v|grep version|cut -d ' ' -f 5 -)" != "20200925"; then
-    echo "Please install acpica-tools 20200925"
+if test "$(mokutil --sb-state)" != "SecureBoot disabled" -a  -z "$FORCE_INSTALL"; then
+    echo "SecureBoot enabled!. ACPI patch and dkms driver may not work!"
+    echo "Force install see \`sudo /bin/sh install.sh --help\`"
     exit 1
 fi
 
 export PRODUCTION_NAME="$(dmidecode -s baseboard-product-name)-$(dmidecode -s system-product-name|sed 's/ /_/g')"
 export BIOS_VERSION="$(dmidecode -s bios-version)"
-
-if test -z "$COMPONENT"; then
-    echo "Usage:"
-    echo "sudo /bin/sh ./install.sh acpi # apply keyboard patch"
-    echo "sudo /bin/sh ./install.sh redmibook_dmic # apply microphone patch"
-    exit 0
-fi
 
 install_driver() {
     DIR="$1"

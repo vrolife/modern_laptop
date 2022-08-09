@@ -8,8 +8,7 @@ dsdt.dsl: dsdt.dat
 	iasl -d dsdt.dat
 
 dsdt.aml: dsdt.dsl
-	/bin/sh ./check.sh
-	patch < "$(TOP_DIR)/${PRODUCTION_NAME}/${BIOS_VERSION}/patch.diff"
+	/bin/sh ./patch.sh
 	iasl dsdt.dsl
 
 compile:
@@ -25,7 +24,6 @@ install: acpi_override
 	/bin/sh ./append-acpi_override-to-grub.sh
 	rm -rf ./kernel
 	rm -f dsdt* acpi_override
-	rm -f .bios .product
 
 uninstall:
 	rm /boot/acpi_override
@@ -36,4 +34,3 @@ test: compile install
 clean:
 	rm -rf ./kernel
 	rm -f dsdt* acpi_override
-	rm -f .bios .product

@@ -4,12 +4,22 @@
 
 [English](https://github-com.translate.goog/vrolife/modern_laptop?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
 
-## 依赖
+## 提示
 
+安装依赖包需要网络连接。所以请提前接入互联网。可能的办法有：
+
+1. 使用Linux能识别的USB外置网卡。
+
+2. 通过USB共享你的Android/iPhone的移动网络.
+
+## 依赖包
+
+- dkms
 - bash
 - make
-- acpica-tools (20200925)
+- acpica-tools
 - dmidecode
+- mokutil
 
 ## 组件
 
@@ -144,6 +154,16 @@ Hunk ##4 FAILED at 5479.
 
 自动升级在`2022年7月19日星期二 下午12:39`更新后支持
 
-## More information
+## 鸣谢（无先后）
 
-[更多信息](https://zhuanlan.zhihu.com/p/530643928)
+- https://github.com/Vliro
+
+- https://github.com/HowardZorn
+
+- https://github.com/puzzle9
+
+- https://github.com/Evan7o
+
+## 更多信息
+
+[链接](https://zhuanlan.zhihu.com/p/530643928)
