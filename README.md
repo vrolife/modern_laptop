@@ -21,6 +21,14 @@
 - dmidecode
 - mokutil
 
+## 发行版
+
+此仓库中的全部驱动都是基于Ubuntu 22.04 + 5.17 内核开发。所以，建议使用Ubuntu 22.04。
+
+Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
+
+目前指纹驱动支持ArchLinux，但是需要手动安装。
+
 ## 组件
 
 Drivers:
