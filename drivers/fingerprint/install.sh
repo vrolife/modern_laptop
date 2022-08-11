@@ -13,6 +13,7 @@ if test $ID = "debian" -o $ID_LIKE = "debian"; then
 
     systemctl stop fprintd
 
+    mkdir -p /opt/fingerpp/bin/
     cp fingerpp2 /opt/fingerpp/bin/fingerpp
     chmod +x /opt/fingerpp/bin/fingerpp
 
@@ -21,7 +22,24 @@ if test $ID = "debian" -o $ID_LIKE = "debian"; then
 
     systemctl edit fprintd
     systemctl restart fprintd
+
+elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
+    pacman -Syyu
+    pacman -S libusb libevent libdbus openssl opencv
+
+    systemctl stop fprintd
+
+    mkdir -p /opt/fingerpp/bin/
+    cp fingerpp2.archlinux /opt/fingerpp/bin/fingerpp
+    chmod +x /opt/fingerpp/bin/fingerpp
+
+    export EDITOR="$(pwd)/edit.sh"
+    chmod +x "$EDITOR"
+
+    systemctl edit fprintd
+    systemctl restart fprintd
+
 else
-    echo "see https://github.com/vrolife/modern_laptop/issues/5#issuecomment-1191811841"
+    echo "Unsupported environment. see https://github.com/vrolife/modern_laptop/issues/5#issuecomment-1191811841"
     exit 1
 fi
