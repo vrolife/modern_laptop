@@ -25,7 +25,7 @@ if test $ID = "debian" -o $ID_LIKE = "debian"; then
 
 elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
     pacman -Syyu
-    pacman -S libusb libevent libdbus openssl opencv
+    pacman -S libusb libevent libdbus openssl opencv fprintd
 
     systemctl stop fprintd
 
