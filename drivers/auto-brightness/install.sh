@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /etc/os-release
+
 if test -z "$SUDO_USER"; then
     echo "Unknown user"
     exit 1
@@ -11,7 +13,11 @@ mkdir -p /opt/auto-brightness/bin/
 
 systemctl --machine=pom@.host --user stop auto-brightness
 
-cp auto-brightness /opt/auto-brightness/bin/auto-brightness
+if test $ID = "manjaro" -o $ID_LIKE = "arch"; then
+    cp auto-brightness.archlinux /opt/auto-brightness/bin/auto-brightness
+else
+    cp auto-brightness /opt/auto-brightness/bin/auto-brightness
+fi
 
 runuser -u $SUDO_USER -- mkdir -p /home/$SUDO_USER/.config/systemd/user
 

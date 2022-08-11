@@ -14,7 +14,7 @@ if test $ID = "debian" -o $ID_LIKE = "debian"; then
     systemctl stop fprintd
 
     mkdir -p /opt/fingerpp/bin/
-    cp fingerpp2 /opt/fingerpp/bin/fingerpp
+    cp fingerpp3 /opt/fingerpp/bin/fingerpp
     chmod +x /opt/fingerpp/bin/fingerpp
 
     export EDITOR="$(pwd)/edit.sh"
@@ -30,7 +30,7 @@ elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
     systemctl stop fprintd
 
     mkdir -p /opt/fingerpp/bin/
-    cp fingerpp2.archlinux /opt/fingerpp/bin/fingerpp
+    cp fingerpp3.archlinux /opt/fingerpp/bin/fingerpp
     chmod +x /opt/fingerpp/bin/fingerpp
 
     export EDITOR="$(pwd)/edit.sh"
