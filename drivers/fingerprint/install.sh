@@ -1,5 +1,9 @@
 #/bin/sh
 
+prerr() {
+    echo "\e[1;31m$@\e[0m"
+}
+
 . /etc/os-release
 
 if test $ID = "debian" -o $ID_LIKE = "debian"; then
@@ -40,6 +44,6 @@ elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
     systemctl restart fprintd
 
 else
-    echo "Unsupported environment. see https://github.com/vrolife/modern_laptop/issues/5#issuecomment-1191811841"
+    prerr "Unsupported environment. see https://github.com/vrolife/modern_laptop/issues/5#issuecomment-1191811841"
     exit 1
 fi

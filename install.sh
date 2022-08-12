@@ -15,10 +15,14 @@ if test -z "$COMPONENT" -o "$COMPONENT" = "-h" -o "$COMPONENT" = "--help"; then
     exit 0
 fi
 
+prerr() {
+    echo "\e[1;31m$@\e[0m"
+}
+
 . /etc/os-release
 
 if test $(id -u) -ne 0; then
-    echo "Permission denied"
+    prerr "Permission denied"
     exit 1
 fi
 
@@ -30,13 +34,13 @@ elif test $ID = "manjaro" -o $ID_LIKE = "arch"; then
     pacman -S dkms bash make acpica dmidecode mokutil
 
 else
-    echo "Unknown environment"
+    prerr "Unknown environment"
     exit 1
 fi
 
 if test "$(mokutil --sb-state)" != "SecureBoot disabled" -a  -z "$FORCE_INSTALL"; then
-    echo "SecureBoot enabled!. ACPI patch and dkms driver may not work!"
-    echo "Force install see \`sudo /bin/sh install.sh --help\`"
+    prerr "SecureBoot enabled!. ACPI patch and dkms driver may not work!"
+    prerr "Force install see \`sudo /bin/sh install.sh --help\`"
     exit 1
 fi
 
@@ -65,4 +69,6 @@ if test -e "$TOP_DIR/drivers/$COMPONENT"; then
 
 elif test -e "$TOP_DIR/fixes/$COMPONENT"; then
     install_driver "$TOP_DIR/fixes/$COMPONENT"
+else
+    prerr "Component $COMPONENT does not exists"
 fi

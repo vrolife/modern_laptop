@@ -1,9 +1,13 @@
 #!/bin/sh
 
+prerr() {
+    echo "\e[1;31m$@\e[0m"
+}
+
 . /etc/os-release
 
 if test -z "$SUDO_USER"; then
-    echo "Unknown user"
+    prerr "Unknown user"
     exit 1
 fi
 

@@ -9,10 +9,10 @@ dsdt.dsl: dsdt.dat
 
 dsdt.aml: dsdt.dsl
 	/bin/sh ./patch.sh
-	iasl dsdt.dsl
+	iasl -ve dsdt.dsl
 
 compile:
-	iasl dsdt.dsl
+	iasl -ve dsdt.dsl
 
 acpi_override: dsdt.aml
 	mkdir -p kernel/firmware/acpi
@@ -24,6 +24,7 @@ install: acpi_override
 	/bin/sh ./append-acpi_override-to-grub.sh
 	rm -rf ./kernel
 	rm -f dsdt* acpi_override
+	@echo "\e[1;33mPlease keep this file '${TOP_DIR}/original_dsdt.dat' for future upgrade\e[0m"
 
 uninstall:
 	rm /boot/acpi_override
