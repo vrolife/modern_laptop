@@ -16,7 +16,7 @@ if test -z "$COMPONENT" -o "$COMPONENT" = "-h" -o "$COMPONENT" = "--help"; then
 fi
 
 prerr() {
-    echo "\e[1;31m$@\e[0m"
+    printf "\e[1;31m$@\e[0m\n"
 }
 
 . /etc/os-release
@@ -38,7 +38,7 @@ else
     exit 1
 fi
 
-if test "$(mokutil --sb-state)" != "SecureBoot disabled" -a  -z "$FORCE_INSTALL"; then
+if test "$(mokutil --sb-state | grep "SecureBoot disabled")" != "SecureBoot disabled" -a  -z "$FORCE_INSTALL"; then
     prerr "SecureBoot enabled!. ACPI patch and dkms driver may not work!"
     prerr "Force install see \`sudo /bin/sh install.sh --help\`"
     exit 1

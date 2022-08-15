@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -e
 CMD="$1"
 DIR="$2"
 

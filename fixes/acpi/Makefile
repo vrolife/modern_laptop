@@ -22,9 +22,9 @@ acpi_override: dsdt.aml
 install: acpi_override
 	cp acpi_override /boot/acpi_override
 	/bin/sh ./append-acpi_override-to-grub.sh
-	rm -rf ./kernel
-	rm -f dsdt* acpi_override
-	@echo "\e[1;33mPlease keep this file '${TOP_DIR}/original_dsdt.dat' for future upgrade\e[0m"
+	@rm -rf ./kernel
+	@rm -f dsdt* acpi_override
+	@printf "\e[1;33mPlease keep this file '${TOP_DIR}/original_dsdt.dat' for future upgrade\e[0m\n"
 
 uninstall:
 	rm /boot/acpi_override

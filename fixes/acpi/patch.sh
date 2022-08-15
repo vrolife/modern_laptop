@@ -1,7 +1,7 @@
 #!/bin/sh
 
 prerr() {
-    echo "\e[1;31m$@\e[0m"
+    printf "\e[1;31m$@\e[0m\n"
 }
 
 if test -z "$TOP_DIR"; then
