@@ -7,6 +7,7 @@
 #include <linux/suspend.h>
 #include <linux/dmi.h>
 #include <linux/leds.h>
+#include <linux/version.h>
 
 static acpi_handle handle_EC0;
 static acpi_handle handle_ECRD;
