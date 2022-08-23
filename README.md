@@ -27,7 +27,13 @@
 
 Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
-目前指纹驱动支持ArchLinux，但是需要手动安装。
+支持的发行版：
+
+1. Ubuntu 22.04 LTS
+
+2. ArchLinux/Manjaro
+
+3. openSUSE Tumbleweed
 
 ## 组件
 
@@ -82,6 +88,10 @@ sudo /bin/sh install.sh disable-PSR ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2022-08-23
+
+  1. 支持`openSUSE Tumbleweed`
 
 - 2022年8月9日
 
