@@ -185,7 +185,6 @@ static int __init ec_init(void)
 
     redmibook_kbd_backlight.brightness = (unsigned int)kbbl_brightness_get(&redmibook_kbd_backlight);
 
-
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 18, 0))
     device = acpi_fetch_acpi_dev(handle_EC0);
 #else
