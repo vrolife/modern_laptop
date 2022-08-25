@@ -57,12 +57,14 @@ Fixes:
 ```
 git clone https://github.com/vrolife/modern_laptop.git
 cd modern_laptop
-sudo /bin/sh install.sh acpi        ## keyboard ACPI patch
-sudo /bin/sh install.sh blue8852be  ## 8852be blutooth
-sudo /bin/sh install.sh rtl8852be   ## 8852be wifi
-sudo /bin/sh install.sh fingerprint ## fingerprint
-sudo /bin/sh install.sh redmibook_* ## redmibook drivers. see `组件`
-sudo /bin/sh install.sh disable-PSR ## disable PSR
+sudo /bin/sh install.sh acpi                      ## keyboard ACPI patch (keyboard driver)
+sudo /bin/sh install.sh blue8852be                ## 8852be blutooth
+sudo /bin/sh install.sh rtl8852be                 ## 8852be wifi
+sudo /bin/sh install.sh fingerprint               ## fingerprint
+sudo /bin/sh install.sh redmibook_wmi             ## function keys
+sudo /bin/sh install.sh redmibook_kbd_backlight   ## keyboard backlight
+sudo /bin/sh install.sh redmibook_dmic            ## microphone
+sudo /bin/sh install.sh disable-PSR               ## disable PSR
 ```
 
 安装后，目录下的original_dsdt.dat是原版DSDT,请保留此文件用于将来升级DSDT补丁。
@@ -79,7 +81,7 @@ sudo /bin/sh install.sh disable-PSR ## disable PSR
 
 - TM2107-Redmi_Book_Pro_14_2022
 
-    BIOS Version: RMARB4B0P0808
+    BIOS Version: RMARB4B0P0808 RMARB5B0P0B0B
 
 ## 已知问题
 
@@ -88,6 +90,10 @@ sudo /bin/sh install.sh disable-PSR ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2022-08-25
+
+  1. ACPI 补丁支持 TM2107-Redmi_Book_Pro_14_2022/RMARB5B0P0B0B [链接](https://github.com/vrolife/modern_laptop/issues/14)
 
 - 2022-08-23
 
@@ -172,15 +178,17 @@ Hunk ##4 FAILED at 5479.
 
 自动升级在`2022年7月19日星期二 下午12:39`更新后支持
 
-## 鸣谢（无先后）
+## 鸣谢（无序）
 
-- https://github.com/Vliro
+- @Vliro
 
-- https://github.com/HowardZorn
+- @HowardZorn
 
-- https://github.com/puzzle9
+- @puzzle9
 
-- https://github.com/Evan7o
+- @Evan7o
+
+- @mikethefirst0
 
 ## 更多信息
 
