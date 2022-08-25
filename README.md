@@ -81,7 +81,7 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 
 - TM2107-Redmi_Book_Pro_14_2022
 
-    BIOS Version: RMARB4B0P0808 RMARB5B0P0B0B
+    BIOS Version: RMARB4B0P0808 RMARB4B0P0B0B
 
 ## 已知问题
 
