@@ -58,7 +58,12 @@ elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
     systemctl edit fprintd
     systemctl restart fprintd
 
+elif test "$ID" = "fedora"; then
+
+    prerr "unsupported"
+    exit 1
+
 else
-    prerr "Unsupported environment. see https://github.com/vrolife/modern_laptop/issues/5#issuecomment-1191811841"
+    prerr "Unsupported environment."
     exit 1
 fi

@@ -16,8 +16,4 @@ else
     echo "GRUB_EARLY_INITRD_LINUX_CUSTOM=\"acpi_override\"" >>/etc/default/grub
 fi
 
-if test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
-    update-bootloader
-else
-    update-grub
-fi
+/bin/sh update-grub.sh
