@@ -1,2 +1,2 @@
-Service: https://www.mi.com/service/bijiben/drivers/A39S
+Service: https://www.mi.com/service/notebook/drivers/A39S
 BIOS: https://cdn.cnbj1.fds.api.mi-img.com/mibook-drivers/BIOS/A28SA39S/20220729/RMARB5B0P0B0B_B1P0404.zip

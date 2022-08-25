@@ -1,0 +1,25 @@
+--- dsdt.dsl	2022-06-29 23:39:37.962822920 +0800
++++ dsdt.dsl.mod	2022-06-29 23:42:20.231512688 +0800
+@@ -18,7 +18,7 @@
+  *     Compiler ID      "ACPI"
+  *     Compiler Version 0x00040000 (262144)
+  */
+-DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2107", 0x00000002)
++DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2107", 0x00000003)
+ {
+     External (_SB_.ALIB, MethodObj)    // 2 Arguments
+     External (_SB_.APTS, MethodObj)    // 1 Arguments
+@@ -5093,7 +5093,7 @@
+                             0x01,               // Alignment
+                             0x01,               // Length
+                             )
+-                        IRQ (Edge, ActiveLow, Shared, )
++                        Interrupt (ResourceConsumer, Edge, ActiveLow, Shared, , ,)
+                             {1}
+                     })
+                 }
+@@ -11994,4 +11994,3 @@
+         }
+     }
+ }
+-
