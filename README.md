@@ -91,6 +91,10 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 
 ## 变更
 
+- 2022-08-26
+
+  1. rtl8852be 1.0.2 支持 Linux 5.19
+
 - 2022-08-25
 
   1. ACPI 补丁支持 TM2107-Redmi_Book_Pro_14_2022/RMARB5B0P0B0B [链接](https://github.com/vrolife/modern_laptop/issues/14)
