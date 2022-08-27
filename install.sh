@@ -39,7 +39,7 @@ elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
     zypper install dkms bash make acpica dmidecode mokutil patch diffutils
 
 elif test "$ID" = "fedora"; then
-    dnf install dkms bash make acpica-tools dmidecode mokutil patch diffutils
+    dnf install dkms bash make acpica-tools dmidecode mokutil patch diffutils dracut
 
 else
     prerr "Unknown environment"
