@@ -8,6 +8,11 @@ if test -z "$TOP_DIR"; then
     export TOP_DIR="$(realpath "$(dirname "$(realpath $0)")/../..")"
 fi
 
+if test -n "$TEST_ACPI"; then
+PRODUCTION_NAME=TM2113-Redmi_Book_Pro_15_2022
+BIOS_VERSION=RMARB5B0P0B0B
+fi
+
 if test ! -e "$TOP_DIR/$PRODUCTION_NAME"; then
     prerr "Unsupported product: $PRODUCTION_NAME"
     exit 1
