@@ -35,6 +35,8 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 3. openSUSE Tumbleweed
 
+4. Fedora
+
 ## 组件
 
 Drivers:
