@@ -11,6 +11,25 @@ index 95aea35..849e147 100644
  {
      External (_SB_.ALIB, MethodObj)    // 2 Arguments
      External (_SB_.APTS, MethodObj)    // 1 Arguments
+@@ -4084,6 +4084,18 @@
+                 Device (ACP)
+                 {
+                     Name (_ADR, 0x05)  // _ADR: Address
++                    Name (_DSD, Package (0x02)  // _DSD: Device-Specific Data
++                    {
++                        ToUUID ("5025030f-842f-4ab4-a561-99a5189762d0") /* Unknown UUID */,
++                        Package (0x01)
++                        {
++                            Package (0x02)
++                            {
++                                "AcpDmicConnected",
++                                One
++                            }
++                        }
++                    })
+                 }
+
+                 Device (AZAL)
 @@ -5093,7 +5093,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000002)
                              0x01,               // Alignment
                              0x01,               // Length

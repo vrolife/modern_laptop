@@ -1,0 +1,30 @@
+--- ssdt21.dsl	2022-09-01 12:59:44.211960901 +0800
++++ ssdt21-new.dsl	2022-09-01 12:59:04.691695415 +0800
+@@ -18,7 +18,7 @@
+  *     Compiler ID      "ACPI"
+  *     Compiler Version 0x00040000 (262144)
+  */
+-DefinitionBlock ("", "SSDT", 1, "XMCC ", "XMCC2113", 0x00000001)
++DefinitionBlock ("", "SSDT", 1, "XMCC ", "XMCC2113", 0x00000001)
+ {
+     External (_ADR, IntObj)
+     External (_SB_.PCI0.DADR, IntObj)
+@@ -2666,6 +2666,18 @@
+         {
+             PWRS
+         })
++        Name (_DSD, Package (0x02)  // _DSD: Device-Specific Data
++        {
++            ToUUID ("5025030f-842f-4ab4-a561-99a5189762d0") /* Unknown UUID */,
++            Package (0x01)
++            {
++                Package (0x02)
++                {
++                    "AcpDmicConnected",
++                    One
++                }
++            }
++        })
+     }
+ 
+     Scope (\_SB.PCI0.GP17.AZAL)

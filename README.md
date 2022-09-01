@@ -12,6 +12,12 @@
 
 2. 通过USB共享你的Android/iPhone的移动网络.
 
+## 更新BIOS后
+
+1. 关闭安全启动
+
+2. 如果文件`original_dsdt.dat`存在，请将之删除
+
 ## 依赖包
 
 - dkms
@@ -43,7 +49,7 @@ Drivers:
 
 - redmibook_wmi 功能键
 - redmibook_kbd_backlight 键盘背光
-- redmibook_dmic 麦克风
+- redmibook_dmic 麦克风 [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
 - fingerprint 指纹
 - blue8852be 蓝牙
 - rtl8852be WIFI
@@ -92,6 +98,10 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2022-09-01
+
+  1. 在`Linux 5.19`和 Ubuntu 的`linux-oem-5.17 5.17.0-1014`中，通过ACPI补丁驱动麦克风。[链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
 
 - 2022-08-26
 

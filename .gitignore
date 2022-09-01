@@ -5,3 +5,4 @@ acpi_override
 kernel
 dsdt*
 original_dsdt.dat
+original_ssdt*.dat

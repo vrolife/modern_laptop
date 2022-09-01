@@ -30,9 +30,9 @@ if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
     apt update
     apt install -y dkms bash make acpica-tools dmidecode mokutil patch diffutils
 
-elif test "$ID" = "manjaro" -o "$ID_LIKE" = "arch"; then
+elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
     pacman -Syyu
-    pacman -S dkms bash make acpica dmidecode mokutil patch diffutils
+    pacman -S dkms bash make acpica dmidecode mokutil patch diffutils cpio
 
 elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
     zypper refresh

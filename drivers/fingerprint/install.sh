@@ -27,7 +27,7 @@ if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
     systemctl edit fprintd
     systemctl restart fprintd
 
-elif test "$ID" = "manjaro" -o "$ID_LIKE" = "arch"; then
+elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
     pacman -S libusb libevent libdbus openssl opencv fprintd
 
     systemctl stop fprintd

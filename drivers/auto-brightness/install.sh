@@ -17,7 +17,7 @@ mkdir -p /opt/auto-brightness/bin/
 
 systemctl --machine=pom@.host --user stop auto-brightness
 
-if test "$ID" = "manjaro" -o "$ID_LIKE" = "arch"; then
+if test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
     cp auto-brightness.archlinux /opt/auto-brightness/bin/auto-brightness
 else
     cp auto-brightness /opt/auto-brightness/bin/auto-brightness

@@ -1,11 +1,11 @@
  #!/bin/sh
 
- . /etc/os-release
-
-if test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
+if which update-bootloader >/dev/null 2>&1; then
     update-bootloader
-elif test "$ID" = "fedora"; then
+elif which grub2-mkconfig >/dev/null 2>&1; then
     grub2-mkconfig -o /boot/grub2/grub.cfg
-else
+elif which grub-mkconfig >/dev/null 2>&1; then
+    grub-mkconfig -o /boot/grub/grub.cfg
+elif which update-grub >/dev/null 2>&1; then
     update-grub
 fi
