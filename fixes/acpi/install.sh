@@ -105,6 +105,9 @@ patch_dsdt
 
 find kernel | cpio -H newc --create > acpi_override
 cp acpi_override /boot/acpi_override
-update_grub
+
+if test -z "$NO_GRUB"; then
+    update_grub
+fi
 
 clean
