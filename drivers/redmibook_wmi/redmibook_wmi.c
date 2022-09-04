@@ -172,7 +172,7 @@ static const struct wmi_device_id redmibook_wmi_id_table[] = {
 
 static struct wmi_driver redmibook_wmi_driver = {
     .driver = {
-        .name = "redmi-wmi"
+        .name = "redmibook-wmi"
     },
     .id_table = redmibook_wmi_id_table,
     .probe = redmibook_wmi_probe,
@@ -183,5 +183,5 @@ module_wmi_driver(redmibook_wmi_driver);
 
 MODULE_DEVICE_TABLE(wmi, redmibook_wmi_id_table);
 MODULE_AUTHOR("Pom");
-MODULE_DESCRIPTION("Redmi WMI driver");
+MODULE_DESCRIPTION("Redmibook WMI driver");
 MODULE_LICENSE("GPL v2");
