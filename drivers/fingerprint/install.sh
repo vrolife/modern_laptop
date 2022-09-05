@@ -1,10 +1,16 @@
 #/bin/sh
+set -e
 
 prerr() {
     printf "\e[1;31m$@\e[0m\n"
 }
 
 . /etc/os-release
+
+if ! lsusb|grep 'FPC Sensor Controller' >/dev/null 2>&1; then
+    prerr "No fingerprint sensor detected"
+    exit 1
+fi
 
 if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
     apt-get install -y \
