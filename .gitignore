@@ -1,6 +1,7 @@
 .vscode
 .product
 .bios
+.skip_update
 acpi_override
 kernel
 dsdt*

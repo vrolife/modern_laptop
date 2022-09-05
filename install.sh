@@ -26,24 +26,26 @@ if test $(id -u) -ne 0; then
     exit 1
 fi
 
-if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
-    apt update
-    apt install -y dkms bash make acpica-tools dmidecode mokutil patch diffutils
+if test ! -e ".skip_update"; then
+    if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
+        apt update
+        apt install -y dkms bash make acpica-tools dmidecode mokutil patch diffutils
 
-elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
-    pacman -Syyu
-    pacman -S dkms bash make acpica dmidecode mokutil patch diffutils cpio
+    elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
+        pacman -Syyu
+        pacman -S dkms bash make acpica dmidecode mokutil patch diffutils cpio
 
-elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
-    zypper refresh
-    zypper install dkms bash make acpica dmidecode mokutil patch diffutils
+    elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
+        zypper refresh
+        zypper install dkms bash make acpica dmidecode mokutil patch diffutils
 
-elif test "$ID" = "fedora"; then
-    dnf install dkms bash make acpica-tools dmidecode mokutil patch diffutils dracut
+    elif test "$ID" = "fedora"; then
+        dnf install dkms bash make acpica-tools dmidecode mokutil patch diffutils dracut
 
-else
-    prerr "Unknown environment"
-    exit 1
+    else
+        prerr "Unknown environment"
+        exit 1
+    fi
 fi
 
 if test "$(mokutil --sb-state | grep "SecureBoot disabled")" != "SecureBoot disabled" -a  -z "$FORCE_INSTALL"; then

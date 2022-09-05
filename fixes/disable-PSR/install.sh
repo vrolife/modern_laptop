@@ -1,11 +1,10 @@
 #!/bin/sh
+set -e
+
+if test -z "$TOP_DIR"; then
+    export TOP_DIR="$(realpath "$(dirname "$(realpath $0)")/../..")"
+fi
 
 cp disable-psr.conf /etc/modprobe.d/disable-psr.conf
 
-if test "$ID" = "fedora"; then
-    dracut --regenerate-all
-elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
-    mkinitcpio -P
-else
-    update-initramfs -k all -u
-fi
+/bin/sh "$TOP_DIR/scripts/update-initrd.sh"

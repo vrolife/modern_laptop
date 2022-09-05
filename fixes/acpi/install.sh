@@ -27,7 +27,7 @@ update_grub() {
         echo "GRUB_EARLY_INITRD_LINUX_CUSTOM=\"acpi_override\"" >>/etc/default/grub
     fi
 
-    /bin/sh ./update-grub.sh
+    /bin/sh "$TOP_DIR/scripts/update-grub.sh"
 }
 
 patch_dsdt() {
