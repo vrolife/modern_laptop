@@ -99,6 +99,10 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 
 ## 变更
 
+- 2022-09-07
+
+  1. rtl8852be for Linux 6.0-rc4
+
 - 2022-09-01
 
   1. 在`Linux 5.19`和 Ubuntu 的`linux-oem-5.17 5.17.0-1014`中，通过ACPI补丁驱动麦克风。[链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
