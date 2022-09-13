@@ -50,7 +50,7 @@ Drivers:
 - redmibook_wmi 功能键
 - redmibook_kbd_backlight 键盘背光
 - redmibook_dmic 麦克风 [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
-- fingerprint 指纹
+- fingerprint 指纹 - For 10a5:9201(FPC FPC Sensor Controller) only
 - blue8852be 蓝牙
 - rtl8852be WIFI
 - auto-brightness 自动亮度
