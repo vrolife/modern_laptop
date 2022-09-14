@@ -1,0 +1,11 @@
+Source: libpython3.8
+Maintainer: Pom <pom@laputa.lan>
+Section: misc
+Priority: optional
+Standards-Version: 0.0.1
+Build-Depends: debhelper (>= 10),libpython3.10
+
+Package: libpython3.8
+Architecture: all
+Depends: libpython3.10
+Description: libpython3.8

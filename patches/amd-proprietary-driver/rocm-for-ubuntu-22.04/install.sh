@@ -12,6 +12,10 @@ cd "$TOP/python"
 
 dpkg-buildpackage -uc -us -tc
 
+cd "$TOP/libpython3.8"
+
+dpkg-buildpackage -uc -us -tc
+
 cd "$TOP"
 
 dpkg -i *.deb
