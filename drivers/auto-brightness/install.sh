@@ -15,7 +15,7 @@ cp auto-brightness.json /etc/
 
 mkdir -p /opt/auto-brightness/bin/
 
-systemctl --machine=pom@.host --user stop auto-brightness
+systemctl --machine=$SUDO_USER@.host --user stop auto-brightness
 
 if test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
     cp auto-brightness.archlinux /opt/auto-brightness/bin/auto-brightness
@@ -27,6 +27,6 @@ runuser -u $SUDO_USER -- mkdir -p /home/$SUDO_USER/.config/systemd/user
 
 runuser -u $SUDO_USER -- cp auto-brightness.service /home/$SUDO_USER/.config/systemd/user/auto-brightness.service
 
-systemctl --machine=pom@.host --user enable /home/$SUDO_USER/.config/systemd/user/auto-brightness.service
+systemctl --machine=$SUDO_USER@.host --user enable /home/$SUDO_USER/.config/systemd/user/auto-brightness.service
 
-systemctl --machine=pom@.host --user start auto-brightness
+systemctl --machine=$SUDO_USER@.host --user start auto-brightness
