@@ -24,7 +24,11 @@ if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
     systemctl stop fprintd
 
     mkdir -p /opt/fingerpp/bin/
-    cp fingerpp3 /opt/fingerpp/bin/fingerpp
+    if test "$VERSION_CODENAME" = "kinetic"; then
+        cp fingerpp3.ubuntu2210 /opt/fingerpp/bin/fingerpp
+    else
+        cp fingerpp3 /opt/fingerpp/bin/fingerpp
+    fi
     chmod +x /opt/fingerpp/bin/fingerpp
 
     export EDITOR="$(pwd)/edit.sh"
