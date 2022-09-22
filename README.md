@@ -47,7 +47,7 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 Drivers:
 
-- redmibook_wmi 功能键
+- redmibook_wmi 功能键 [Keymap](https://github.com/vrolife/modern_laptop/blob/main/drivers/redmibook_wmi/README.md)
 - redmibook_kbd_backlight 键盘背光
 - redmibook_dmic 麦克风 [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
 - fingerprint 指纹 - For 10a5:9201(FPC FPC Sensor Controller) only
