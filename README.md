@@ -33,6 +33,8 @@
 
 Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
+
+
 支持的发行版：
 
 1. Ubuntu 22.04 LTS
@@ -50,14 +52,14 @@ Drivers:
 - redmibook_wmi 功能键 [Keymap](https://github.com/vrolife/modern_laptop/blob/main/drivers/redmibook_wmi/README.md)
 - redmibook_kbd_backlight 键盘背光
 - redmibook_dmic 麦克风 [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
-- fingerprint 指纹 - For 10a5:9201(FPC FPC Sensor Controller) only
+- fingerprint 指纹 - For USB 10a5:9201(FPC FPC Sensor Controller) only
 - blue8852be 蓝牙
 - rtl8852be WIFI
 - auto-brightness 自动亮度
 
 Fixes:
 
-- acpi（修复键盘和电源管理，强烈推荐！）
+- acpi - Drive the keyboard(Linux<5.19.11) and microphone(>=Ubuntu Linux oem 5.17.0-1014, >=Mainline Linux 5.19) without kmod. Fix power management. [Detail](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
 - disable-PSR
 
 ## 安装
@@ -65,7 +67,7 @@ Fixes:
 ```
 git clone https://github.com/vrolife/modern_laptop.git
 cd modern_laptop
-sudo /bin/sh install.sh acpi                      ## keyboard ACPI patch (keyboard driver)
+sudo /bin/sh install.sh acpi                      ## apply ACPI patch
 sudo /bin/sh install.sh blue8852be                ## 8852be blutooth
 sudo /bin/sh install.sh rtl8852be                 ## 8852be wifi
 sudo /bin/sh install.sh fingerprint               ## fingerprint
@@ -93,7 +95,7 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 
 ## 已知问题
 
-- 目前内核（<=5.19）不支持 Yellow Carp PSR。 [链接](https://lore.kernel.org/all/20220510204508.506089-15-dingchen.zhang@amd.com/T/)
+- 目前内核（<6.0）不支持 Yellow Carp PSR。 [链接](https://lore.kernel.org/all/20220510204508.506089-15-dingchen.zhang@amd.com/T/)
 
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
