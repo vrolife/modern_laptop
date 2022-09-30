@@ -634,15 +634,15 @@ else
 export CONFIG_RTL8852BE = m
 
 all:
-	make -j$(JOB) -C /lib/modules/$(KERNELRELEASE)/build M=$(shell pwd) KERNELRELEASE=$(KERNELRELEASE) ENTRY= modules
+	make -j7 -C /lib/modules/$(KERNELRELEASE)/build M=$(shell pwd) KERNELRELEASE=$(KERNELRELEASE) ENTRY= modules
 
 install:
-	make -j$(JOB) -C /lib/modules/$(KERNELRELEASE)/build M=$(shell pwd) KERNELRELEASE=$(KERNELRELEASE) ENTRY= modules_install
+	make -j7 -C /lib/modules/$(KERNELRELEASE)/build M=$(shell pwd) KERNELRELEASE=$(KERNELRELEASE) ENTRY= modules_install
 
 .PHONY: clean
 
 clean:
-	make -j$(JOB) -C /lib/modules/$(KERNELRELEASE)/build M=$(shell pwd) KERNELRELEASE=$(KERNELRELEASE) ENTRY= clean
+	make -j7 -C /lib/modules/$(KERNELRELEASE)/build M=$(shell pwd) KERNELRELEASE=$(KERNELRELEASE) ENTRY= clean
 
 endif
 
