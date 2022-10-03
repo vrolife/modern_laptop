@@ -1,3 +1,4 @@
+
 ## Redmi Book Pro 14/15 2022 锐龙版 Linux 驱动
 
 ## Redmi Book Pro 14/15 2022 Ryzen Linux Driver
@@ -33,8 +34,6 @@
 
 Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
-
-
 支持的发行版：
 
 1. Ubuntu 22.04 LTS
@@ -52,7 +51,7 @@ Drivers:
 - redmibook_wmi 功能键 [Keymap](https://github.com/vrolife/modern_laptop/blob/main/drivers/redmibook_wmi/README.md)
 - redmibook_kbd_backlight 键盘背光
 - redmibook_dmic 麦克风 [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
-- fingerprint 指纹 - For USB 10a5:9201(FPC FPC Sensor Controller) only
+- [fingerprint](https://github.com/vrolife/fingerprint-ocv) 指纹 - For USB 10a5:9201(FPC FPC Sensor Controller) only
 - blue8852be 蓝牙
 - rtl8852be WIFI
 - auto-brightness 自动亮度
@@ -64,7 +63,7 @@ Fixes:
 
 ## 安装
 
-```
+```bash
 git clone https://github.com/vrolife/modern_laptop.git
 cd modern_laptop
 sudo /bin/sh install.sh acpi                      ## apply ACPI patch
@@ -100,6 +99,10 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2022/10/4
+
+  1. [Fingerprint driver source code](https://github.com/vrolife/fingerprint-ocv)
 
 - 2022-09-07
 

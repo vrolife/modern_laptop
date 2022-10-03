@@ -54,11 +54,7 @@ ExecStart=/opt/fingerpp/bin/fingerpp --bus=system
 
 # 开放源代码
 
-驱动用了内部异步框架开发的，而这个框架还没做好开源的准备。因此目前只放出二进制文件。
-
-2022年7月22日星期五
-
-整理了一些文档资料，放在docs/目录下。其中包括传感器的通信协议和通信流程。还有两份基于C和Python的通信程序不完整例子。基于这些资料，已经足够开发另一个驱动程序。
+[Source Code](https://github.com/vrolife/fingerprint-ocv)
 
 # 文件
 
