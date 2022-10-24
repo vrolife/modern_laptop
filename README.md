@@ -88,6 +88,8 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 
     BIOS Version: RMARB5B0P0A0A RMARB5B0P0B0B
 
+    ICC Profile: [Link](https://github.com/vrolife/modern_laptop/issues/38)
+
 - TM2107-Redmi_Book_Pro_14_2022
 
     BIOS Version: RMARB4B0P0808 RMARB4B0P0B0B
