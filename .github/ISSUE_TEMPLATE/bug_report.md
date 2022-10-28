@@ -27,7 +27,8 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. iOS]
  - Version [e.g. 22]
  - Kernel version
+ - Environment: `cat /etc/os-release`
 
 ** Log **
 Application error message or command output.
-For kernel/driver issue, provide /var/log/dmesg and /var/log/dmesg.0
+For kernel/driver issue, provide /var/log/dmesg and /var/log/dmesg.0, if both files does not exists, run `journalctl -k > /var/log/dmesg` and `journalctl -b-1 -k > /var/log/dmesg.0` to generate them.

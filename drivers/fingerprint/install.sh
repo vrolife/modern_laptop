@@ -70,8 +70,19 @@ elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
 
 elif test "$ID" = "fedora"; then
 
-    prerr "unsupported"
-    exit 1
+    dnf install libusb1-devel libevent-devel dbus-devel openssl-devel opencv fprintd
+
+    systemctl stop fprintd
+
+    mkdir -p /opt/fingerpp/bin/
+    cp fingerpp3.fedora /opt/fingerpp/bin/fingerpp
+    chmod +x /opt/fingerpp/bin/fingerpp
+
+    export EDITOR="$(pwd)/edit.sh"
+    chmod +x "$EDITOR"
+
+    systemctl edit fprintd
+    systemctl restart fprintd
 
 else
     prerr "Unsupported environment."
