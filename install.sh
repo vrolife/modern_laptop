@@ -39,7 +39,7 @@ if test ! -e ".skip_update"; then
         zypper refresh
         zypper install dkms bash make acpica dmidecode mokutil patch diffutils
 
-    elif test "$ID" = "fedora"; then
+    elif test "$ID" = "fedora" -o "$ID" = "nobara"; then
         dnf install dkms bash make acpica-tools dmidecode mokutil patch diffutils dracut
 
     else

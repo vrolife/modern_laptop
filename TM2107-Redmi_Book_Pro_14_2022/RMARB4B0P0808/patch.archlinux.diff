@@ -9,7 +9,26 @@
  {
      External (_SB_.ALIB, MethodObj)    // 2 Arguments
      External (_SB_.APTS, MethodObj)    // 1 Arguments
-@@ -5093,7 +5093,7 @@
+@@ -4084,6 +4084,18 @@
+                 Device (ACP)
+                 {
+                     Name (_ADR, 0x05)  // _ADR: Address
++                    Name (_DSD, Package (0x02)  // _DSD: Device-Specific Data
++                    {
++                        ToUUID ("5025030f-842f-4ab4-a561-99a5189762d0") /* Unknown UUID */,
++                        Package (0x01)
++                        {
++                            Package (0x02)
++                            {
++                                "AcpDmicConnected",
++                                One
++                            }
++                        }
++                    })
+                 }
+
+                 Device (AZAL)
+@@ -5093,7 +5093,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000002)
                              0x01,               // Alignment
                              0x01,               // Length
                              )
@@ -18,8 +37,21 @@
                              {1}
                      })
                  }
-@@ -11994,4 +11994,3 @@
-         }
-     }
- }
--
+@@ -5471,7 +5471,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000002)
+                     {
+                         If ((DPTC == One))
+                         {
+-                            Name (PPPB, Buffer (0x12){})
++                            Name (PPPB, Buffer (0x11){})
+                             CreateWordField (PPPB, Zero, SSZE)
+                             CreateByteField (PPPB, 0x02, PMDH)
+                             CreateDWordField (PPPB, 0x03, VCLT)
+@@ -5479,7 +5479,7 @@ DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2113", 0x00000002)
+                             CreateDWordField (PPPB, 0x08, VMCL)
+                             CreateByteField (PPPB, 0x0C, PMDB)
+                             CreateDWordField (PPPB, 0x0D, P3TL)
+-                            SSZE = 0x12
++                            SSZE = 0x11
+                             PMDH = 0x0B
+                             VCLT = Arg0
+                             PMDI = 0x0C

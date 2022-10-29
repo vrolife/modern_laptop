@@ -50,7 +50,7 @@ Drivers:
 
 - redmibook_wmi 功能键 [Keymap](https://github.com/vrolife/modern_laptop/blob/main/drivers/redmibook_wmi/README.md)
 - redmibook_kbd_backlight 键盘背光
-- redmibook_dmic 麦克风 [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
+- redmibook_dmic 麦克风  - After Linux 5.19 or linux-oem-5.17.0-1014, microphone driven by ACPI patch. Do not install this driver. [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
 - [fingerprint](https://github.com/vrolife/fingerprint-ocv) 指纹 - For USB 10a5:9201(FPC FPC Sensor Controller) only
 - blue8852be 蓝牙
 - rtl8852be WIFI
@@ -72,7 +72,7 @@ sudo /bin/sh install.sh rtl8852be                 ## 8852be wifi
 sudo /bin/sh install.sh fingerprint               ## fingerprint
 sudo /bin/sh install.sh redmibook_wmi             ## function keys
 sudo /bin/sh install.sh redmibook_kbd_backlight   ## keyboard backlight
-sudo /bin/sh install.sh redmibook_dmic            ## microphone
+sudo /bin/sh install.sh redmibook_dmic            ## microphone - After Linux 5.19 or linux-oem-5.17.0-1014, microphone driven by ACPI patch. Do not install this driver.
 sudo /bin/sh install.sh disable-PSR               ## disable PSR
 ```
 
