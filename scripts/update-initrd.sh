@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /etc/os-release
+
 if test "$ID" = "fedora" -o "$ID" = "nobara"; then
     dracut --regenerate-all
 elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then

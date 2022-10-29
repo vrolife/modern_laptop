@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
  - Version [e.g. 22]
- - Kernel version
+ - Kernel version: `uname -a`
  - Environment: `cat /etc/os-release`
 
 ** Log **

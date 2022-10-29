@@ -68,7 +68,7 @@ elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
     systemctl edit fprintd
     systemctl restart fprintd
 
-elif test "$ID" = "fedora"; then
+elif test "$ID" = "fedora" -o "$ID" = "nobara"; then
 
     dnf install libusb1-devel libevent-devel dbus-devel openssl-devel opencv fprintd
 
