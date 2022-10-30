@@ -1,0 +1,19 @@
+--- dsdt.dsl	2022-10-30 11:53:00.845086490 +0800
++++ b/dsdt.dsl	2022-10-30 12:40:07.608166594 +0800
+@@ -18,7 +18,7 @@
+  *     Compiler ID      "ACPI"
+  *     Compiler Version 0x00040000 (262144)
+  */
+-DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2019", 0x00000002)
++DefinitionBlock ("", "DSDT", 1, "XMCC  ", "XMCC2019", 0x00000003)
+ {
+     /*
+      * iASL Warning: There were 12 external control methods found during
+@@ -4432,7 +4432,6 @@
+                             ALBH (0x06, (FPPT * 0x03E8))
+                             ALBH (0x07, (SPPT * 0x03E8))
+                             ALBH (0x05, (HSPL * 0x03E8))
+-                            ALIB (One, 0x05)
+                             Return (One)
+                         }
+ 
