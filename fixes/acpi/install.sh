@@ -48,6 +48,8 @@ patch_dsdt() {
     /bin/sh dump_table.sh "$BACKUP_DIR"
     iasl -e `ls "$BACKUP_DIR"/ssdt*.dat|sort -V -r` -p "$(pwd)/dsdt" -d "$BACKUP_DIR/dsdt.dat"
 
+    cp dsdt.dsl dsdt.dsl.origin
+
     if ! patch < "$PATCH"; then
         prerr "Patch ACPI table failed!"
         exit 1
