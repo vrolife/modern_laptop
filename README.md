@@ -1,7 +1,13 @@
 
-## Redmi Book Pro 14/15 2022 锐龙版 Linux 驱动
+## Linux 驱动 / Linux Driver
 
-## Redmi Book Pro 14/15 2022 Ryzen Linux Driver
+- Redmi Book Pro 14 2022 Ryzen 锐龙版
+
+- Redmi Book Pro 15 2022 Ryzen 锐龙版
+
+- Redmi Book Pro 15 2021 Ryzen 锐龙版
+
+## Redmi Book Pro 14/15 2022/2021 Ryzen Linux Driver
 
 [English](https://github-com.translate.goog/vrolife/modern_laptop?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
 
