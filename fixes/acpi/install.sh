@@ -13,8 +13,10 @@ clean() {
 }
 
 update_grub() {
-    if ! grep acpi_osi /etc/default/grub >/dev/null; then
-        echo "GRUB_CMDLINE_LINUX=\"\$GRUB_CMDLINE_LINUX acpi_osi=! acpi_osi=Linux\"" >>/etc/default/grub
+    local OVERRIDE_ACPI_OSI="$TOP_DIR/${PRODUCTION_NAME}/${BIOS_VERSION}/override_acpi_osi.sh"
+
+    if test -e "$OVERRIDE_ACPI_OSI"; then
+        sh "$OVERRIDE_ACPI_OSI"
     fi
 
     if grep acpi_override /etc/default/grub >/dev/null; then
