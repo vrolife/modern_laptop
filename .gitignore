@@ -7,3 +7,4 @@ kernel
 dsdt*
 original_dsdt.dat
 original_ssdt*.dat
+ACPI_BACKUP_*

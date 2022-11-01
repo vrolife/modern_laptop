@@ -1,0 +1,6 @@
+kernel
+acpi_override
+*.dsl
+*.dat
+*.aml
+*.rej

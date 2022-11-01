@@ -43,48 +43,34 @@ patch_dsdt() {
         return
     fi
 
-    /bin/sh dump_table.sh dsdt
-    iasl -d dsdt.dat
+    BACKUP_DIR="$TOP_DIR/ACPI_BACKUP_$BIOS_VERSION"
 
-    patch < "$PATCH"
+    /bin/sh dump_table.sh "$BACKUP_DIR"
+    iasl -e `ls "$BACKUP_DIR"/ssdt*.dat|sort -V -r` -p "$(pwd)/dsdt" -d "$BACKUP_DIR/dsdt.dat"
+
+    if ! patch < "$PATCH"; then
+        prerr "Patch ACPI table failed!"
+        exit 1
+    fi
 
     iasl -ve dsdt.dsl
     cp dsdt.aml kernel/firmware/acpi/
-}
-
-# not working, do not call this function
-patch_dmic() {
-    local KO="/lib/modules/$(uname -r)/kernel/sound/soc/amd/yc/snd-soc-acp6x-mach.ko"
-    local PATCH="$TOP_DIR/${PRODUCTION_NAME}/${BIOS_VERSION}/ssdt21.diff"
-
-    if test -e "/lib/modules/$(uname -r)/updates/dkms/snd-soc-acp6x-mach.ko"; then
-        return
-    fi
-
-    if test ! -e "$KO" -o ! -e "$PATCH"; then
-        return
-    fi
-
-    if !grep AcpDmicConnected "$KO" >/dev/null 2>&1; then
-        return
-    fi
-
-    /bin/sh dump_table.sh ssdt21
-    iasl -d ssdt21.dat
-
-    patch < "$PATCH"
-
-    iasl -ve ssdt21.dsl
-    cp ssdt21.aml kernel/firmware/acpi/
 }
 
 if test -z "$TOP_DIR"; then
     export TOP_DIR="$(realpath "$(dirname "$(realpath $0)")/../..")"
 fi
 
-if test -n "$TEST_ACPI"; then
+if test -n "$TEST_ACPI_TM2113"; then
     export PRODUCTION_NAME=TM2113-Redmi_Book_Pro_15_2022
     export BIOS_VERSION=RMARB5B0P0B0B
+    export TEST_ACPI=1
+fi
+
+if test -n "$TEST_ACPI_TM2019"; then
+    export PRODUCTION_NAME=TM2019-RedmiBook_Pro_15S
+    export BIOS_VERSION=RMACZ5B0P0909
+    export TEST_ACPI=1
 fi
 
 if test ! -e "$TOP_DIR/$PRODUCTION_NAME"; then
@@ -104,10 +90,18 @@ mkdir -p kernel/firmware/acpi
 patch_dsdt
 
 find kernel | cpio -H newc --create > acpi_override
-cp acpi_override /boot/acpi_override
 
-if test -z "$NO_GRUB"; then
-    update_grub
+if test -z "$TEST_ACPI"; then
+    cp acpi_override /boot/acpi_override
+
+    if test -z "$NO_GRUB"; then
+        update_grub
+    fi
 fi
 
-clean
+if test -z "$ACPI_KEEP_FILES"; then
+    clean
+fi
+
+printf "\e[1;33mSuccessful!!!\e[0m\n"
+printf "\e[1;33mPlease keep this folder '$BACKUP_DIR' for future upgrades\e[0m\n"

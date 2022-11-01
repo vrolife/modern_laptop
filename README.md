@@ -13,20 +13,7 @@
 
 2. 通过USB共享你的Android/iPhone的移动网络.
 
-## 更新BIOS后
-
-1. 关闭安全启动
-
-2. 如果文件`original_dsdt.dat`存在，请将之删除
-
-## 依赖包
-
-- dkms
-- bash
-- make
-- acpica-tools
-- dmidecode
-- mokutil
+更新BIOS后 关闭安全启动
 
 ## 发行版
 
@@ -44,22 +31,73 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 4. Fedora
 
-## 组件
+## 依赖包
 
-Drivers:
+- dkms
+- bash
+- make
+- acpica-tools
+- dmidecode
+- mokutil
 
-- redmibook_wmi 功能键 [Keymap](https://github.com/vrolife/modern_laptop/blob/main/drivers/redmibook_wmi/README.md)
-- redmibook_kbd_backlight 键盘背光
-- redmibook_dmic 麦克风  - After Linux 5.19 or linux-oem-5.17.0-1014, microphone driven by ACPI patch. Do not install this driver. [链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
-- [fingerprint](https://github.com/vrolife/fingerprint-ocv) 指纹 - For USB 10a5:9201(FPC FPC Sensor Controller) only
-- blue8852be 蓝牙
-- rtl8852be WIFI
-- auto-brightness 自动亮度
+## 支持机型
 
-Fixes:
+- TM2113-Redmi_Book_Pro_15_2022
 
-- acpi - Drive the keyboard(Linux<5.19.11) and microphone(>=Ubuntu Linux oem 5.17.0-1014, >=Mainline Linux 5.19) without kmod. Fix power management. [Detail](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
-- disable-PSR
+    BIOS Version: RMARB5B0P0A0A RMARB5B0P0B0B
+
+    校色文件 ICC Profile: [Link](https://github.com/vrolife/modern_laptop/issues/38)
+
+    可用组件:
+
+    * blue8852be **RTL8852BE 蓝牙驱动**
+
+    * rtl8852be  **RTL8852BE 网卡驱动**
+
+    * fingerprint **指纹驱动**
+
+        仅支持 USB 10a5:9201(FPC FPC Sensor Controller).
+
+        [源码](https://github.com/vrolife/fingerprint-ocv)
+
+    * redmibook_wmi **功能键**
+
+    * redmibook_kbd_backlight **键盘背光**
+
+    * redmibook_dmic **麦克风**
+
+        Linux 5.19 或 linux-oem-5.17.0-1014 之后不需要要此驱动，安装ACPI补丁即可。
+
+        [详情](https://github.com/vrolife/modern_laptop/blob
+
+    * disable-PSR **关闭PSR(屏幕面板自刷新 Panel Self Refresh)**
+
+    * acpi **ACPI补丁 ACPI Patch**
+
+      修复键盘问题(Linux<5.19.11)
+
+      驱动麦克风(>=Ubuntu Linux oem 5.17.0-1014, >=Mainline Linux 5.19)
+
+      修复电源管理
+
+      [详情](https://github.com/vrolife/modern_laptop/blob/main/fixes/acpi/README.md)
+
+
+- TM2107-Redmi_Book_Pro_14_2022
+
+    BIOS Version: RMARB4B0P0808 RMARB4B0P0B0B
+
+    注意: TM2107 用的是和 TM2113 一样的主板. 支持的组件请参考 TM2113
+
+- TM2019-RedmiBook_Pro_15S
+
+    BIOS Version: RMACZ5B0P0909
+
+    可用组件:
+
+    * acpi
+
+      修复笔记本合盖问题。 Fix lid
 
 ## 安装
 
@@ -72,27 +110,13 @@ sudo /bin/sh install.sh rtl8852be                 ## 8852be wifi
 sudo /bin/sh install.sh fingerprint               ## fingerprint
 sudo /bin/sh install.sh redmibook_wmi             ## function keys
 sudo /bin/sh install.sh redmibook_kbd_backlight   ## keyboard backlight
-sudo /bin/sh install.sh redmibook_dmic            ## microphone - After Linux 5.19 or linux-oem-5.17.0-1014, microphone driven by ACPI patch. Do not install this driver.
+sudo /bin/sh install.sh redmibook_dmic            ## microphone
 sudo /bin/sh install.sh disable-PSR               ## disable PSR
 ```
 
-安装后，目录下的original_dsdt.dat是原版DSDT,请保留此文件用于将来升级DSDT补丁。
-
 ## 卸载
 
-`sudo /bin/sh uninstall.sh driver_name`
-
-## 支持机型
-
-- TM2113-Redmi_Book_Pro_15_2022
-
-    BIOS Version: RMARB5B0P0A0A RMARB5B0P0B0B
-
-    ICC Profile: [Link](https://github.com/vrolife/modern_laptop/issues/38)
-
-- TM2107-Redmi_Book_Pro_14_2022
-
-    BIOS Version: RMARB4B0P0808 RMARB4B0P0B0B
+`sudo /bin/sh uninstall.sh component`
 
 ## 已知问题
 
@@ -101,6 +125,14 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2022/11/1
+
+  1. ACPI patch for TM2019-RedmiBook_Pro_15S (RedmiBook Pro 2021) - Fix lid issue.
+
+- 2022/10/31
+
+  1. Fingerprint driver for Fedora/Nobara
 
 - 2022/10/4
 
