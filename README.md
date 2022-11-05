@@ -50,7 +50,7 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 - TM2113-Redmi_Book_Pro_15_2022
 
-    BIOS Version: RMARB5B0P0A0A RMARB5B0P0B0B
+    BIOS Version: RMARB5B0P0A0A RMARB5B0P0B0B RMARB5B0P0C0C RMARB5B1P0C0C
 
     校色文件 ICC Profile: [Link](https://github.com/vrolife/modern_laptop/issues/38)
 
@@ -91,7 +91,7 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 - TM2107-Redmi_Book_Pro_14_2022
 
-    BIOS Version: RMARB4B0P0808 RMARB4B0P0B0B
+    BIOS Version: RMARB4B0P0808 RMARB4B0P0A0A RMARB4B0P0B0B RMARB4B0P0C0C
 
     注意: TM2107 用的是和 TM2113 一样的主板. 支持的组件请参考 TM2113
 
@@ -131,6 +131,10 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2022/11/5
+
+  1. ACPI patch for TM2113 RMARB5B1P0C0C
 
 - 2022/11/1
 
