@@ -1,0 +1,2 @@
+Service: https://www.mi.com/service/bijiben/drivers/A28S
+BIOS: *
