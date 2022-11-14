@@ -7,5 +7,6 @@ fi
 
 rm /boot/acpi_override
 sed -i 's/acpi_override//g' /etc/default/grub
+sed -i 's/mem_sleep_default=deep//g' /etc/default/grub
 
 /bin/sh "$TOP_DIR/scripts/update-grub.sh"
