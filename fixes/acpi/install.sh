@@ -12,6 +12,26 @@ clean() {
     rm -f dsdt* ssdt* acpi_override
 }
 
+grub_mem_sleep() {
+    if [ "$(dmidecode -s baseboard-product-name)" != "TM2019" ]; then
+        return
+    fi
+
+    if grep mem_sleep_default /etc/default/grub >/dev/null; then
+        prerr "There is a mem_sleep_default parameter in /etc/default/grub!"
+        prerr "You should manually add mem_sleep_default=deep to GRUB_CMDLINE_LINUX_DEFAULT if needed."
+        return
+    fi
+
+    if grep 'GRUB_CMDLINE_LINUX_DEFAULT' /etc/default/grub >/dev/null; then
+        sed -ire 's/GRUB_CMDLINE_LINUX_DEFAULT="(.+)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 mem_sleep_default=deep"/g' /etc/default/grub
+    else
+        echo "GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep\"" >>/etc/default/grub
+    fi
+    
+    return
+}
+
 update_grub() {
     local OVERRIDE_ACPI_OSI="$TOP_DIR/${PRODUCTION_NAME}/${BIOS_VERSION}/override_acpi_osi.sh"
 
@@ -20,14 +40,20 @@ update_grub() {
     fi
 
     if grep acpi_override /etc/default/grub >/dev/null; then
+        prerr "There is a acpi_override in /etc/default/grub!"
+        prerr "You should you should first run uninstall.sh to remove old intallation."
+        prerr "Or you can manually add mem_sleep_default=deep to GRUB_CMDLINE_LINUX_DEFAULT"
+        prerr "and GRUB_EARLY_INITRD_LINUX_CUSTOM=\"acpi_override\" if needed."
         return
     fi
-
+    
     if grep 'GRUB_EARLY_INITRD_LINUX_CUSTOM=""' /etc/default/grub >/dev/null; then
         sed -i 's/GRUB_EARLY_INITRD_LINUX_CUSTOM=""/GRUB_EARLY_INITRD_LINUX_CUSTOM="acpi_override"/g' /etc/default/grub
     else
         echo "GRUB_EARLY_INITRD_LINUX_CUSTOM=\"acpi_override\"" >>/etc/default/grub
     fi
+
+    grub_mem_sleep
 
     /bin/sh "$TOP_DIR/scripts/update-grub.sh"
 }
