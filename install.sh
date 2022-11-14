@@ -33,7 +33,7 @@ if test ! -e ".skip_update"; then
 
     elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
         pacman -Syyu
-        pacman -S dkms bash make acpica dmidecode mokutil patch diffutils cpio
+        pacman -S --needed dkms bash make acpica dmidecode mokutil patch diffutils cpio
 
     elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
         zypper refresh
