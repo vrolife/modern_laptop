@@ -13,6 +13,10 @@ clean() {
 }
 
 grub_mem_sleep() {
+    if [ "$(dmidecode -s baseboard-product-name)" != "TM2019" ]; then
+        return
+    fi
+
     if grep mem_sleep_default /etc/default/grub >/dev/null; then
         prerr "There is a mem_sleep_default parameter in /etc/default/grub!"
         prerr "You should manually add mem_sleep_default=deep to GRUB_CMDLINE_LINUX_DEFAULT if needed."
