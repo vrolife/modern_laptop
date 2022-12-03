@@ -75,7 +75,7 @@ elif test "$ID" = "fedora" -o "$ID" = "nobara"; then
     systemctl stop fprintd
 
     mkdir -p /opt/fingerpp/bin/
-    cp fingerpp3.fedora /opt/fingerpp/bin/fingerpp
+    cp fingerpp3.static /opt/fingerpp/bin/fingerpp
     chmod +x /opt/fingerpp/bin/fingerpp
 
     export EDITOR="$(pwd)/edit.sh"
