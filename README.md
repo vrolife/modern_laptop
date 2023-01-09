@@ -27,6 +27,8 @@
 
 Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
+目前Linux 6.0表现比5.17更好，主要是AMDGPU不会随机卡死，并且支持PSR功能（更省电）。Ubuntu用户可通过安装`linux-oem-22.04b`获得6.0内核
+
 支持的发行版：
 
 1. Ubuntu 22.04 LTS
@@ -124,6 +126,10 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 
 `sudo /bin/sh uninstall.sh component`
 
+## 升级
+
+如果升级ACPI补丁失败，请看[此处](https://github.com/vrolife/modern_laptop/issues/55#issuecomment-1374755208)
+
 ## 已知问题
 
 - 目前内核（<6.0）不支持 Yellow Carp PSR。 [链接](https://lore.kernel.org/all/20220510204508.506089-15-dingchen.zhang@amd.com/T/)
@@ -131,6 +137,12 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2023/1/9
+
+  1. Update README.md
+
+  2. Linux 6.0 recommended, AMDGPU no random freezing, PSR available (save power)
 
 - 2022/11/5
 
@@ -231,21 +243,6 @@ sudo /bin/sh install.sh disable-PSR               ## disable PSR
 
   2. 修复 - 可能的，PSR导致的内核崩溃。[链接](https://github.com/vrolife/modern_laptop/blob/main/fixes/PSR-crash/README.md)
 
-## 升级
-
-如果之前`make install`安装过/boot/acpi_override，升级安装新版的话，会出现这样的错误
-
-```
-patching file dsdt.dsl
-Reversed (or previously applied) patch detected!  Assume -R? [n] y
-Hunk ##3 FAILED at 5471.
-Hunk ##4 FAILED at 5479.
-2 out of 4 hunks FAILED -- saving rejects to file dsdt.dsl.rej
-```
-
-这时需要启动到Grub启动菜单，在启动选项按E编辑，删除initrd后面的acpi_override部分。接着按F10启动进系统安装新版补丁。注意这时键盘是无效的，请使用外接键盘。
-
-自动升级在`2022年7月19日星期二 下午12:39`更新后支持
 
 ## 鸣谢（无序）
 
