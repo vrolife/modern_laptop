@@ -60,7 +60,11 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
     * blue8852be **RTL8852BE 蓝牙驱动**
 
-    * rtl8852be  **RTL8852BE 网卡驱动**
+    * Deprecated rtl8852be  **RTL8852BE 网卡驱动**
+
+        此驱动已经放弃。Linux 6.1 有内建的8852BE wifi驱动，请考虑安装Linux 6.1
+
+        [源码](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/net/wireless/realtek/rtw89/rtw8852be.c?h=v6.1)
 
     * fingerprint **指纹驱动**
 
@@ -112,14 +116,14 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 ```bash
 git clone https://github.com/vrolife/modern_laptop.git
 cd modern_laptop
-sudo /bin/sh install.sh acpi                      ## apply ACPI patch
-sudo /bin/sh install.sh blue8852be                ## 8852be blutooth
-sudo /bin/sh install.sh rtl8852be                 ## 8852be wifi
-sudo /bin/sh install.sh fingerprint               ## fingerprint
-sudo /bin/sh install.sh redmibook_wmi             ## function keys
-sudo /bin/sh install.sh redmibook_kbd_backlight   ## keyboard backlight
-sudo /bin/sh install.sh redmibook_dmic            ## microphone
-sudo /bin/sh install.sh disable-PSR               ## disable PSR
+sudo /bin/sh install.sh acpi                             ## apply ACPI patch
+sudo /bin/sh install.sh blue8852be                       ## 8852BE blutooth
+sudo echo Deprecated ！！！ /bin/sh install.sh rtl8852be  ## 8852BE wifi (Linux 6.1 有内建的8852BE wifi驱动，请考虑安装Linux 6.1)
+sudo /bin/sh install.sh fingerprint                      ## fingerprint
+sudo /bin/sh install.sh redmibook_wmi                    ## function keys
+sudo /bin/sh install.sh redmibook_kbd_backlight          ## keyboard backlight
+sudo /bin/sh install.sh redmibook_dmic                   ## microphone
+sudo /bin/sh install.sh disable-PSR                      ## disable PSR
 ```
 
 ## 卸载
