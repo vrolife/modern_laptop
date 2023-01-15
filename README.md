@@ -39,6 +39,8 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 4. Fedora
 
+5. Linux Mint
+
 ## 依赖包
 
 - dkms
@@ -141,6 +143,10 @@ sudo /bin/sh install.sh disable-PSR                      ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2023/1/15
+
+  1. Patching support for Linux Mint. [Link](https://github.com/vrolife/modern_laptop/issues/58)
 
 - 2023/1/9
 

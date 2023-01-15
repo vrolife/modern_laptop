@@ -12,7 +12,7 @@ if ! lsusb|grep 'FPC Sensor Controller' >/dev/null 2>&1; then
     exit 1
 fi
 
-if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
+if test "$ID" = "debian" -o "$ID_LIKE" = "debian" -o "$ID" = "linuxmint"; then
     apt-get install -y \
         libssl3 \
         libopencv-dev \

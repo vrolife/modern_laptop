@@ -27,7 +27,7 @@ if test $(id -u) -ne 0; then
 fi
 
 if test ! -e ".skip_update"; then
-    if test "$ID" = "debian" -o "$ID_LIKE" = "debian"; then
+    if test "$ID" = "debian" -o "$ID_LIKE" = "debian" -o "$ID" = "linuxmint"; then
         apt update
         apt install -y dkms bash make acpica-tools dmidecode mokutil patch diffutils
 
