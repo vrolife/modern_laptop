@@ -29,6 +29,7 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 目前Linux 6.0表现比5.17更好，主要是AMDGPU不会随机卡死，并且支持PSR功能（更省电）。Ubuntu用户可通过安装`linux-oem-22.04b`获得6.0内核
 
+
 支持的发行版：
 
 1. Ubuntu 22.04 LTS
@@ -64,7 +65,9 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
     * Deprecated rtl8852be  **RTL8852BE 网卡驱动**
 
-        此驱动已经放弃。Linux 6.1 有内建的8852BE wifi驱动，请考虑安装Linux 6.1
+        因为我的笔记本电脑已将将rtl8852be更换为ax210, 所以我已经没有条件维护此驱动。因此分支`rtl8852be_linux_6_1`中的代码能够编译通过，但是未经测试。
+
+        此驱动即将放弃。[rtw89](https://github.com/lwfinger/rtw89) 将会是更好的选择。 Linux 6.1 有8852BE wifi驱动相关代码， 但是可能要自行编译。
 
         [源码](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/net/wireless/realtek/rtw89/rtw8852be.c?h=v6.1)
 
@@ -120,7 +123,7 @@ git clone https://github.com/vrolife/modern_laptop.git
 cd modern_laptop
 sudo /bin/sh install.sh acpi                             ## apply ACPI patch
 sudo /bin/sh install.sh blue8852be                       ## 8852BE blutooth
-sudo echo Deprecated ！！！ /bin/sh install.sh rtl8852be  ## 8852BE wifi (Linux 6.1 有内建的8852BE wifi驱动，请考虑安装Linux 6.1)
+sudo /bin/sh install.sh rtl8852be                        ## 8852BE wifi
 sudo /bin/sh install.sh fingerprint                      ## fingerprint
 sudo /bin/sh install.sh redmibook_wmi                    ## function keys
 sudo /bin/sh install.sh redmibook_kbd_backlight          ## keyboard backlight
