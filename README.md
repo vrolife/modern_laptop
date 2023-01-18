@@ -127,7 +127,7 @@ sudo /bin/sh install.sh rtl8852be                        ## 8852BE wifi
 sudo /bin/sh install.sh fingerprint                      ## fingerprint
 sudo /bin/sh install.sh redmibook_wmi                    ## function keys
 sudo /bin/sh install.sh redmibook_kbd_backlight          ## keyboard backlight
-sudo /bin/sh install.sh redmibook_dmic                   ## microphone
+sudo /bin/sh install.sh redmibook_dmic                   ## microphone (Linux 6.x + ACPI patch may be better than this driver)
 sudo /bin/sh install.sh disable-PSR                      ## disable PSR
 ```
 
