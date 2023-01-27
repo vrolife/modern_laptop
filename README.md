@@ -63,6 +63,12 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
     * blue8852be **RTL8852BE 蓝牙驱动**
 
+    * rtw89-lwfinger
+
+        Better rtl8852be driver
+
+        [rtw89](https://github.com/lwfinger/rtw89)
+
     * Deprecated rtl8852be  **RTL8852BE 网卡驱动**
 
         因为我的笔记本电脑已将将rtl8852be更换为ax210, 所以我已经没有条件维护此驱动。因此分支`rtl8852be_linux_6_1`中的代码能够编译通过，但是未经测试。
@@ -123,7 +129,8 @@ git clone https://github.com/vrolife/modern_laptop.git
 cd modern_laptop
 sudo /bin/sh install.sh acpi                             ## apply ACPI patch
 sudo /bin/sh install.sh blue8852be                       ## 8852BE blutooth
-sudo /bin/sh install.sh rtl8852be                        ## 8852BE wifi
+sudo /bin/sh install.sh rtw89-lwfinger                   ## Better RTL8852BE driver
+sudo /bin/sh install.sh rtl8852be                        ## Deprecated RTL8852BE driver
 sudo /bin/sh install.sh fingerprint                      ## fingerprint
 sudo /bin/sh install.sh redmibook_wmi                    ## function keys
 sudo /bin/sh install.sh redmibook_kbd_backlight          ## keyboard backlight
@@ -146,6 +153,10 @@ sudo /bin/sh install.sh disable-PSR                      ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2023/1/27
+
+  1. Add [rtw89](https://github.com/lwfinger/rtw89)
 
 - 2023/1/15
 

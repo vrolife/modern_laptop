@@ -26,6 +26,10 @@ if test "$CMD" = "install"; then
         modprobe $BUILT_MODULE_NAME
     fi
 
+    if test -e "$DIR/postinst.sh"; then
+        (cd $DIR; /bin/sh "$DIR/postinst.sh")
+    fi
+
     /bin/sh "$TOP_DIR/scripts/update-initrd.sh"
 
     printf "\e[1;33mPlease reboot your system\e[0m\n"
