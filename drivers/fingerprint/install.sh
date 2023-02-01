@@ -24,11 +24,7 @@ if test "$ID" = "debian" -o "$ID_LIKE" = "debian" -o "$ID" = "linuxmint"; then
     systemctl stop fprintd
 
     mkdir -p /opt/fingerpp/bin/
-    if test "$VERSION_CODENAME" = "kinetic"; then
-        cp fingerpp3.ubuntu2210 /opt/fingerpp/bin/fingerpp
-    else
-        cp fingerpp3 /opt/fingerpp/bin/fingerpp
-    fi
+    cp fingerpp3.static /opt/fingerpp/bin/fingerpp
     chmod +x /opt/fingerpp/bin/fingerpp
 
     export EDITOR="$(pwd)/edit.sh"
@@ -43,7 +39,7 @@ elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
     systemctl stop fprintd
 
     mkdir -p /opt/fingerpp/bin/
-    cp fingerpp3.archlinux /opt/fingerpp/bin/fingerpp
+    cp fingerpp3.static /opt/fingerpp/bin/fingerpp
     chmod +x /opt/fingerpp/bin/fingerpp
 
     export EDITOR="$(pwd)/edit.sh"
@@ -59,7 +55,7 @@ elif test "$ID" = "opensuse-tumbleweed" -o "$ID_LIKE" = "opensuse suse"; then
     systemctl stop fprintd
 
     mkdir -p /opt/fingerpp/bin/
-    cp fingerpp3.archlinux /opt/fingerpp/bin/fingerpp
+    cp fingerpp3.static /opt/fingerpp/bin/fingerpp
     chmod +x /opt/fingerpp/bin/fingerpp
 
     export EDITOR="$(pwd)/edit.sh"
