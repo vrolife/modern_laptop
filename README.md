@@ -29,6 +29,7 @@ Ubuntu 22.04 可通过安装包linux-image-oem-22.04获得5.17内核。
 
 目前Linux 6.0表现比5.17更好，主要是AMDGPU不会随机卡死，并且支持PSR功能（更省电）。Ubuntu用户可通过安装`linux-oem-22.04b`获得6.0内核
 
+linux-oem-6.1_6.1.0-1006.6 Enable RTL8852BE wifi driver (LP: #2002601)
 
 支持的发行版：
 
