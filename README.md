@@ -137,6 +137,7 @@ sudo /bin/sh install.sh redmibook_wmi                    ## function keys
 sudo /bin/sh install.sh redmibook_kbd_backlight          ## keyboard backlight
 sudo /bin/sh install.sh redmibook_dmic                   ## microphone (Linux 6.x + ACPI patch may be better than this driver)
 sudo /bin/sh install.sh disable-PSR                      ## disable PSR
+sudo /bin/sh install.sh acpi_backlight_native            ## Fix Linux 6.1.x backlight problem. [Issue](https://github.com/vrolife/modern_laptop/issues/69)
 ```
 
 ## 卸载
@@ -154,6 +155,10 @@ sudo /bin/sh install.sh disable-PSR                      ## disable PSR
 - S0休眠耗电，大约3.7%每小时。S4/S5 休眠唤醒ACPI报错。混合休眠不工作。
 
 ## 变更
+
+- 2023/2/22
+
+  1. Fix Linux 6.1.x backlight problem. [Issue](https://github.com/vrolife/modern_laptop/issues/69)
 
 - 2023/1/27
 
