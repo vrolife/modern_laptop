@@ -7,4 +7,6 @@ if ! grep acpi_backlight /etc/default/grub >/dev/null 2>&1; then
     echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX acpi_backlight=native"' >> /etc/default/grub
 fi
 
+/bin/sh "$TOP_DIR/scripts/update-grub.sh"
+
 echo Done
