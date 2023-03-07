@@ -18,5 +18,7 @@ sudo sed -i "s|<device path>|/dev/bus/usb/$DEV_PATH|g" /opt/fingerprint-ocv/fing
 
 sudo systemctl enable /opt/fingerprint-ocv/fingerprint.service
 
+sudo systemctl start fingerprint.service
+
 ```
 
