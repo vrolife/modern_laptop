@@ -2,7 +2,6 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Stockholm
 RUN apt update && apt-get install -y libssl3 \
-  libopencv-dev \
   libusb-1.0-0 \
   fprintd \
   libevent-core-2.1-7 \
@@ -15,6 +14,6 @@ RUN useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
 
 #maybe change directory
 WORKDIR /app
-COPY fingerpp /app/fingerpp
+COPY fingerpp3.static /app/fingerpp
 
 ENTRYPOINT ["/app/fingerpp", "--bus=system"]
