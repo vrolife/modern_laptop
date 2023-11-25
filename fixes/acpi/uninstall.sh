@@ -5,10 +5,10 @@ if test -z "$TOP_DIR"; then
     export TOP_DIR="$(realpath "$(dirname "$(realpath $0)")/../..")"
 fi
 
-rm /boot/acpi_override
+rm -f /boot/acpi_override
 sed -i 's/acpi_override//g' /etc/default/grub
 
-if [ "$(dmidecode -s baseboard-product-name)" == "TM2019" ]; then
+if test "$(dmidecode -s baseboard-product-name)" = "TM2019" ; then
     sed -i 's/mem_sleep_default=deep//g' /etc/default/grub
 fi
 
