@@ -1,5 +1,5 @@
---- dsdt.dsl.origin	2022-11-13 08:36:30.610840597 +0300
-+++ dsdt.dsl	2022-11-13 08:47:03.909784196 +0300
+--- dsdt.dsl.origin	2023-10-23 14:41:31.482905117 +0700
++++ dsdt.dsl	2023-10-23 14:41:37.969536188 +0700
 @@ -18,7 +18,7 @@
   *     Compiler ID      "ACPI"
   *     Compiler Version 0x00040000 (262144)
@@ -36,7 +36,32 @@
      Name (_S4, Package (0x04)  // _S4_: S4 System State
      {
          0x04, 
-@@ -4404,7 +4397,6 @@
+@@ -4140,8 +4133,8 @@
+                         USGC,   8
+                     }
+ 
+-                    OperationRegion (ECMM, SystemMemory, 0xFEFF0400, 0x01FF)
+-                    Field (ECMM, ByteAcc, Lock, Preserve)
++                    OperationRegion (ECF2, EmbeddedControl, Zero, 0xFF)
++                    Field (ECF2, ByteAcc, Lock, Preserve)
+                     {
+                         XXX0,   8, 
+                         XXX1,   8, 
+@@ -4219,7 +4212,12 @@
+                         Offset (0xF1), 
+                         TPSV,   8, 
+                         THOT,   8, 
+-                        TCRT,   8, 
++                        TCRT,   8
++                    }
++
++                    OperationRegion (ECMM, SystemMemory, 0xFEFF0400, 0x01FF)
++                    Field (ECMM, ByteAcc, Lock, Preserve)
++                    {
+                         Offset (0x128), 
+                         BTMF,   88, 
+                         Offset (0x137), 
+@@ -4407,7 +4405,6 @@
                              ALBH (0x06, (FPPT * 0x03E8))
                              ALBH (0x07, (SPPT * 0x03E8))
                              ALBH (0x05, (HSPL * 0x03E8))
@@ -44,7 +69,7 @@
                              Return (One)
                          }
  
-@@ -4688,7 +4680,6 @@
+@@ -4691,7 +4688,6 @@
                              ALBH (0x06, 0x4E20)
                              ALBH (0x07, 0x4E20)
                              ALBH (0x05, 0x00051C98)
