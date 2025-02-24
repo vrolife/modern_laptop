@@ -38,7 +38,13 @@ if test "$ID" = "debian" -o "$ID_LIKE" = "debian" -o "$ID" = "linuxmint"; then
     systemctl restart fprintd
 
 elif test "$ID" = "manjaro" -o "$ID" = "arch" -o "$ID_LIKE" = "arch"; then
-    pacman -S libusb libevent libdbus openssl opencv fprintd
+    pacman -S libusb libevent libdbus openssl openssl-1.1 fprintd
+    pacman -U https://archive.archlinux.org/packages/o/opencv/opencv-4.6.0-7-x86_64.pkg.tar.zst
+    pacman -U https://archive.archlinux.org/packages/o/openexr/openexr-3.1.11-1-x86_64.pkg.tar.zst
+    
+    cp /etc/pacman.conf /etc/pacman.conf.bak
+    sudo sed -i '/^#IgnorePkg/s/^#//' /etc/pacman.conf
+    sudo sed -i "/^IgnorePkg/s/$/ opencv openexr/" /etc/pacman.conf
 
     systemctl stop fprintd
 
